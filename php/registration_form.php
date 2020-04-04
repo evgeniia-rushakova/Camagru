@@ -31,10 +31,19 @@ function add_user_into_table($pdo, $arr)
 	$arr[] = $token;
 	$newstringintable = "INSERT INTO Users2 (user, email, password, accepted_email, token) VALUES ('$newuser','$newwuseremail', '$newwuserpass', false, '$token')";
 	$pdo->exec($newstringintable);
+	/////////////////////////////////////////////
+	$dbname ="test_keys";
+	$pdo->query("use $dbname");
+	$newstringintable = "INSERT INTO Users (user, email, password, accepted_email, token) VALUES ('$newuser','$newwuseremail', '$newwuserpass', false, '$token')";
+	$pdo->exec($newstringintable);
+	////////////////////////////////////////////
 	if (send_mail_to_user_confirm_email($arr) == false)
 		echo "EMAIL NOT SENDED!\n";
 	else
+	{
 		header("Location: "."../index.php");//добавить сообщение типа проверь почту
+		print("  <script>alert( 'Подтвержденоо' );</script>");
+	}
 }
 
 function is_this_is_new_user($pdo, $arr)

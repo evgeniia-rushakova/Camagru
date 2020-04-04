@@ -16,14 +16,20 @@ function pull_from_base($filename, $pdo)
 
 function generate_comments($pdo, $photo)
 {
-	$result = $pdo->prepare("SELECT * FROM comments where photo = ?");
+
+	$result = $pdo->prepare("SELECT * FROM comments where photo_id = ?");
 	$result->execute([$photo]);
 	$fetch = $result->fetchAll();
 	$final= "";
 	foreach ($fetch as $item)
 	{
 		$template = file_get_contents("tpl/comment--layout.php");
-		$author = $item['comment_author'];
+		$author_id = $item['comment_author'];
+
+		$smtp = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+		$smtp->execute(array($author_id));
+		$author = $smtp->fetch()['user'];
+
 		$date = $item['date_of_comment'];
 		$text = $item['comment_text'];
 		$template = str_replace('{comment-author}', $author, $template);
@@ -36,33 +42,47 @@ function generate_comments($pdo, $photo)
 
 function render_inner_content_popup($content)
 {
-	$mydb = "mydb";
+	$mydb = "test_keys";
 	$pdo = connect_to_database($mydb);
 	$arrlong= explode("/",$_SERVER['QUERY_STRING']);
 	$filename = $arrlong[count($arrlong) -1];
 	$info = pull_from_base($filename, $pdo);
-	$author = $info['author'];
-	$date = $info['date'];
-	$likes = $info['likes'];
-	$dislikes = $info['dislikes'];
-	$description = $info['description'];
-	$img_src = "../gallery_photos/$filename";
-	$width = "250px";
-	$height = "250px";
-	$comments = generate_comments($pdo, $filename);
-	$template = $content;
-	$template = str_replace('{img_src}', $img_src, $template);
-	$template = str_replace('{img_alt}', "$filename", $template);
-	$template = str_replace('{img_width}', $width, $template);
-	$template = str_replace('{img_height}', $height, $template);
-	$template = str_replace('{likes}', "$likes", $template);
-	$template = str_replace('{dislikes}', "$dislikes", $template);
-	$template = str_replace('{photo-date}', "$date", $template);
-	$template = str_replace('{photo-author}', "$author", $template);
-	$template = str_replace('{description}', "$description", $template);
+	if ($info)
+	{
 
-	$template = str_replace('{comments}', "$comments", $template);
-	return ($template);
+		$author_id = $info['author_id'];
+		$date = $info['date'];
+		$likes = $info['likes'];
+		$dislikes = $info['dislikes'];
+		$description = $info['description'];
+		$img_src = "../gallery_photos/$filename";
+		$width = "250px";
+		$height = "250px";
+
+		$smtp = $pdo->prepare("SELECT * FROM photos WHERE photo = ?");
+		$smtp->execute(array($filename));
+		$photo_id = $smtp->fetch()['id'];
+		$comments = generate_comments($pdo, $photo_id);
+		$template = $content;
+
+		$smtp = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+		$smtp->execute(array($author_id));
+		$author = $smtp->fetch()['user'];
+		$template = str_replace('{img_src}', $img_src, $template);
+		$template = str_replace('{img_alt}', "$filename", $template);
+		$template = str_replace('{img_width}', $width, $template);
+		$template = str_replace('{img_height}', $height, $template);
+		$template = str_replace('{likes}', "$likes", $template);
+		$template = str_replace('{dislikes}', "$dislikes", $template);
+		$template = str_replace('{photo-date}', "$date", $template);
+		$template = str_replace('{photo-author}', "$author", $template);
+		$template = str_replace('{description}', "$description", $template);
+
+		$template = str_replace('{comments}', "$comments", $template);
+		return ($template);
+	}
+	header("Location: "."../gallery.php");
+	return (null);
 }
 
 $title = "TEMPORARY POPUP";

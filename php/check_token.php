@@ -17,6 +17,12 @@ function check_token($email, $token)
 	{
 		$confirm = $pdo->prepare("UPDATE Users2 SET accepted_email = TRUE WHERE email = ?");
 		$confirm->execute([$email]);
+		///////////////////////////////////////////////
+		$dbname ="test_keys";
+		$pdo->query("use $dbname");
+		$newstringintable = $pdo->prepare("UPDATE Users SET accepted_email = TRUE WHERE email = ?");
+		$newstringintable->execute([$email]);
+		/////////////////////////////////////////
 		return (1);
 	}
 	$pdo = null;

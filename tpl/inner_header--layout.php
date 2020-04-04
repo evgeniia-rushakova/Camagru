@@ -8,6 +8,7 @@
 		</nav>
 		<nav class="user-navigation">
 			<ul class="user-navigation__menu">
+				<li class="user-navigation__link"><a href="../php/cabinet.php" class="sign-in-icon">Cabinet</a></li>
 				<li class="user-navigation__link"><a href="../php/logout.php" class="sign-in-icon">log out</a></li>
 			</ul>
 		</nav>

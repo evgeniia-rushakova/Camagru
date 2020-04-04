@@ -28,21 +28,25 @@ function check_registration_for_user()
 		$pass = $arr[1];
 
 		$smtp_email = $pdo->prepare("SELECT COUNT(*) FROM users2 WHERE user = ? AND accepted_email = ?");
-		$smtp_email->execute(array($user, "1"));
+	 	$smtp_email->execute(array($user, "1"));
 		$count_email = $smtp_email->fetchColumn();
 
 		$smtp_pass =  $pdo->prepare("SELECT password FROM users2 WHERE user = ? AND accepted_email = ?");
 		$smtp_pass->execute(array($user, "1"));
-		$pass_hash=$smtp_pass->fetch(PDO::FETCH_ASSOC)['password'];
-
+		//$pass_hash=$smtp_pass->fetch()['password'];
+		$pass_hash = $smtp_pass->fetch()['password'];
 		$check_pass = password_verify($pass, $pass_hash);
+		if ($check_pass == false)
+		{
+			echo "wrong pass";
+			exit;
+		}
 		if ($count_email == 1 && $check_pass == true)
 		{
 			open_session($user);
 		}
 		else
 			echo "problem!email not confirmed";
-
 	}
 	$pdo = null;
 }

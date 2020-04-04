@@ -49,10 +49,21 @@ function add_info_about_photo($item)
 	$pdo =  connect_to_database($mydb);;
 	$photo = $item;
 	$author = $_SESSION['user'];
-	$date = date("F j, Y, g:i a");
+	$date = date('Y-m-d-H-i-s');
 	$description =clean_data($_POST['description']);
 	$sql= "INSERT INTO photos (photo, author, date, description, likes, dislikes) VALUES ('$photo', '$author', '$date', '$description', '0', '0')";
 	$pdo->exec($sql);
+	////////////////////////////////////////////////////////
+	$dbname ="test_keys";
+	$pdo->query("use $dbname");
+	$smtp= $pdo->prepare("SELECT id FROM users where user = ?");
+	$smtp->execute(array($author));
+	$id = $smtp->fetch(PDO::FETCH_ASSOC)['id'];
+
+	$sql= "INSERT INTO photos (photo, author_id, date, description, likes, dislikes) VALUES ('$photo', '$id', '$date', '$description', '0', '0')";
+	$pdo->exec($sql);
+	$pdo = null;
+	///////////////////////////////////////////////////////
 	header("Location: ".$_SERVER["HTTP_REFERER"]);
 }
 

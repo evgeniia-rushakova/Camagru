@@ -40,7 +40,37 @@ function create_users_table($pdo)
 
 function create_test_table($pdo)
 {
+	$dbname ="test_keys";
+	$pdo->query("CREATE DATABASE IF NOT EXISTS $dbname");
+	$pdo->query("use $dbname");
+	$table = "CREATE TABLE IF NOT EXISTS users(
+    		id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY , 
+			user  VARCHAR(30) NOT NULL,
+			email VARCHAR(30) NOT NULL,
+			password VARCHAR(60),
+			accepted_email BOOLEAN,
+			token VARCHAR(50) NOT NULL)ENGINE=INNODB";
+	$pdo->exec($table);
 
+	$table = "CREATE TABLE IF NOT EXISTS photos(
+    	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    	photo VARCHAR(50) NOT NULL,
+    	author_id INT(6) UNSIGNED NOT NULL,
+    	date datetime NOT NULL,
+    	likes INT(6) NOT NULL,
+    	dislikes INT(6) NOT NULL, 
+    	description VARCHAR(300) NOT NULL,
+    	FOREIGN KEY (author_id) REFERENCES users(id))ENGINE=INNODB";
+	$pdo->exec($table);
+	$table = "CREATE TABLE IF NOT EXISTS comments(
+    	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    	photo_id INT(6) UNSIGNED NOT NULL ,
+    	date_of_comment DATETIME NOT NULL,
+    	comment_author INT UNSIGNED NOT NULL,
+    	comment_text VARCHAR(300) NOT NULL,
+    	FOREIGN KEY (photo_id) REFERENCES photos(id) ON DELETE CASCADE,
+    	FOREIGN KEY (comment_author) REFERENCES users(id))ENGINE=INNODB";
+	$pdo->exec($table);
 }
 
 function create_database()
