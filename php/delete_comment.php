@@ -6,7 +6,7 @@ check_user_is_parent_of_comment();
 
 function delete_comment_from_base($comment_id)
 {
-	$mydb = "test_keys";
+	$mydb = "mydb";
 	$pdo = connect_to_database($mydb);
 
 	$email_sql_author = $pdo->prepare("DELETE FROM comments WHERE id = ?");
@@ -17,12 +17,11 @@ function delete_comment_from_base($comment_id)
 
 function check_user_is_parent_of_comment()
 {
-	$mydb = "test_keys";
+	$mydb = "mydb";
 	$user = $_SESSION['user'];
 	$pdo = connect_to_database($mydb);
 	$comment_text = $_GET['text'];
 	$comment_date = $_GET['date'];
-
 	$smtp = $pdo->prepare("SELECT * FROM Users WHERE user = ?");
 	$smtp->execute(array($user));
 	$user_id = $smtp->fetch()['id'];
@@ -34,7 +33,7 @@ function check_user_is_parent_of_comment()
 	$comment_id = $result['id'];
 	$pdo = null;
 
-	if (strcmp($user_id, $comment_author_id) == 0)
+	if (strcmp($user_id, $comment_author_id) == 0 || strcmp($user, "admin") == 0)
 	{
 		delete_comment_from_base($comment_id);
 	}

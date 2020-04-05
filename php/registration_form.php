@@ -13,7 +13,6 @@ function send_mail_to_user_confirm_email($arr)
 	$token =$arr[3];
 	$link = "http://localhost/php/check_token.php?user=$to&token=$token";
 	$message = "Hello, $user! If you want to confirm your email, please get this <a href=$link>link</a>!";
-	//echo $message;
 	$headers = array(
 		'From' => 'cat_lover@list.ru',
 		'Reply-To' => 'cat_lover@list.ru'
@@ -29,14 +28,8 @@ function add_user_into_table($pdo, $arr)
 	$newwuserpass = password_hash($arr[2], PASSWORD_BCRYPT);
 	$token =bin2hex(random_bytes(20));
 	$arr[] = $token;
-	$newstringintable = "INSERT INTO Users2 (user, email, password, accepted_email, token) VALUES ('$newuser','$newwuseremail', '$newwuserpass', false, '$token')";
+	$newstringintable = "INSERT INTO Users (user, email, password, accepted_email, token, notifications) VALUES ('$newuser','$newwuseremail', '$newwuserpass', false, '$token', true)";
 	$pdo->exec($newstringintable);
-	/////////////////////////////////////////////
-	$dbname ="test_keys";
-	$pdo->query("use $dbname");
-	$newstringintable = "INSERT INTO Users (user, email, password, accepted_email, token) VALUES ('$newuser','$newwuseremail', '$newwuserpass', false, '$token')";
-	$pdo->exec($newstringintable);
-	////////////////////////////////////////////
 	if (send_mail_to_user_confirm_email($arr) == false)
 		echo "EMAIL NOT SENDED!\n";
 	else
@@ -48,7 +41,7 @@ function add_user_into_table($pdo, $arr)
 
 function is_this_is_new_user($pdo, $arr)
 {
-	$sql = $pdo->prepare("SELECT COUNT(*) FROM users2 WHERE user = ? AND  email= ?");
+	$sql = $pdo->prepare("SELECT COUNT(*) FROM users WHERE user = ? AND  email= ?");
 	$sql->execute(array($arr[0], $arr[1]));
 	$count = $sql->fetchColumn();
 

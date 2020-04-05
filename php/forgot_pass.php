@@ -6,12 +6,13 @@ send_mail_to_user_change_pass($email);
 
 function zero_password_and_create_new_token($email)
 {
-	$pdo = $mydb="mydb"; connect_to_database($mydb);;
+	$pdo = $mydb="mydb";
+	connect_to_database($mydb);;
 	$fakepass=NULL;
 	$newtoken =bin2hex(random_bytes(20));
-	$zeropass = $pdo->prepare("UPDATE Users2 SET password = ? WHERE email = ?");
+	$zeropass = $pdo->prepare("UPDATE Users SET password = ? WHERE email = ?");
 	$zeropass->execute(array($fakepass,$email));
-	$change_token = $pdo->prepare("UPDATE Users2 SET token = ? WHERE email = ?");
+	$change_token = $pdo->prepare("UPDATE Users SET token = ? WHERE email = ?");
 	$change_token->execute(array($newtoken, $email));
 	$pdo = null;
 	return ($newtoken);

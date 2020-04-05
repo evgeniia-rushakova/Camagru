@@ -16,7 +16,6 @@ function pull_from_base($filename, $pdo)
 
 function generate_comments($pdo, $photo)
 {
-
 	$result = $pdo->prepare("SELECT * FROM comments where photo_id = ?");
 	$result->execute([$photo]);
 	$fetch = $result->fetchAll();
@@ -42,14 +41,13 @@ function generate_comments($pdo, $photo)
 
 function render_inner_content_popup($content)
 {
-	$mydb = "test_keys";
+	$mydb = "mydb";
 	$pdo = connect_to_database($mydb);
 	$arrlong= explode("/",$_SERVER['QUERY_STRING']);
 	$filename = $arrlong[count($arrlong) -1];
 	$info = pull_from_base($filename, $pdo);
 	if ($info)
 	{
-
 		$author_id = $info['author_id'];
 		$date = $info['date'];
 		$likes = $info['likes'];

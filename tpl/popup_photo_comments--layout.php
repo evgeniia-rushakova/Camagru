@@ -9,6 +9,9 @@ justify-content: space-between;
 margin-bottom: 50px;">
 	<div class="photo__src">
         <img src="{img_src}" alt={img_alt} width={img_width} height={img_height}>
+		<form action="../php/delete_photo.php?photo={img_src}" method="post">
+			<button type="submit" >del</button>
+		</form>
     </div>
 	<div class="photo__reactions">
 		<p class="photo__like_counter"><a class="photo__like_icon" href="#"><3</a>{likes}</p>

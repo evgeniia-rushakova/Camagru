@@ -9,12 +9,12 @@ function open_session($user)
 {
 	$mydb="mydb";
 	$pdo = connect_to_database($mydb);;
-	$find_user= $pdo->prepare("SELECT user FROM users2 WHERE user = ?");
+	$find_user= $pdo->prepare("SELECT user FROM users WHERE user = ?");
 	$find_user->execute([$user]);
 	$user = $find_user->fetchColumn();
 	$pdo = null;
 	session_start();
-		$_SESSION['user'] = $user;
+	$_SESSION['user'] = $user;
 	header("Location: "."../inner_camagru.php");
 }
 
@@ -27,11 +27,11 @@ function check_registration_for_user()
 		$user = $arr[0];
 		$pass = $arr[1];
 
-		$smtp_email = $pdo->prepare("SELECT COUNT(*) FROM users2 WHERE user = ? AND accepted_email = ?");
-	 	$smtp_email->execute(array($user, "1"));
+		$smtp_email = $pdo->prepare("SELECT COUNT(*) FROM users WHERE user = ? AND accepted_email = ?");
+		$smtp_email->execute(array($user, "1"));
 		$count_email = $smtp_email->fetchColumn();
 
-		$smtp_pass =  $pdo->prepare("SELECT password FROM users2 WHERE user = ? AND accepted_email = ?");
+		$smtp_pass =  $pdo->prepare("SELECT password FROM users WHERE user = ? AND accepted_email = ?");
 		$smtp_pass->execute(array($user, "1"));
 		//$pass_hash=$smtp_pass->fetch()['password'];
 		$pass_hash = $smtp_pass->fetch()['password'];

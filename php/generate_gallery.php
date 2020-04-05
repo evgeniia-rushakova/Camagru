@@ -1,8 +1,7 @@
 <?php
 include_once "databases.php";
-if (isset($_REQUEST[session_name()])) session_start();
-
-
+//if (isset($_REQUEST[session_name()])) session_start();
+session_start();
 function get_gallery_photos()
 {
 	$photos_array = scandir("gallery_photos");
@@ -12,11 +11,10 @@ function get_gallery_photos()
 	$width = "150px";
 	$height = "150px";
 	$template_origin = file_get_contents("tpl/photo_in_gallery--layout.php");
-
+	$mydb="mydb";
+	$pdo =  connect_to_database($mydb);
 	foreach ($photos_array as $item)
 	{
-		$mydb="mydb";
-		$pdo =  connect_to_database($mydb);;
 		$sql = $pdo->prepare("SELECT description FROM photos WHERE photo = ?") ;
 		$sql->execute([$item]);
 		$img_alt = $sql->fetchColumn();

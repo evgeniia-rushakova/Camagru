@@ -4,11 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500&display=swap" rel="stylesheet">
     <link rel="preload" href="css/style.min.css" as="style">
     <link rel="stylesheet" type="text/css" href="css/normalize.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/style.min.css">-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
     <title>{title}</title>
 </head>
 <body>
