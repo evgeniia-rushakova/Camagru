@@ -1,11 +1,11 @@
 <?php
 include_once "php/databases.php";
 session_start();
-/*if(!isset($_SESSION['user'])|| $_SESSION['user']==false)
+if(!isset($_SESSION['user'])|| $_SESSION['user']==false)
 {
 	header("Location: index.php");
 	exit;
-}*/
+}
 function pull_from_base($filename, $pdo)
 {
 	$check = $pdo->prepare("SELECT * FROM photos where photo = ?");

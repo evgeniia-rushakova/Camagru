@@ -1,11 +1,11 @@
 <?php
 include_once "php/databases.php";
 session_start();
-/*
-if(!isset($_SESSION['user'])){
+if(!isset($_SESSION['user'])|| $_SESSION['user']==false)
+{
 	header("Location: index.php");
 	exit;
-}*/
+}
 
 function get_photos_from_user($id, $pdo)
 {

@@ -4,6 +4,7 @@ include_once "validity.php";
 $addr = $_SERVER['HTTP_REFERER'];
 $pass1 = $_GET['password'];
 $pass2 = $_GET['password2'];
+session_start();
 
 function check_token_and_email($addr)
 {
@@ -23,10 +24,10 @@ function check_token_and_email($addr)
 	return (NULL);
 }
 
-function change_password($pass1, $pass2, $email)
+function change_password($pass1, $email)
 {
-	if (strcmp($pass1, $pass2) == 0)
-	{
+//	if (strcmp($pass1, $pass2) == 0)
+//	{
 		$arr = check_validity();
 		if ($arr == NULL) echo "password is bad";
 		else
@@ -42,8 +43,7 @@ function change_password($pass1, $pass2, $email)
 			$pdo = null;
 			return (1);
 		}
-	}
-	else echo "passwords not identical";
+//	}
 	return (0);
 }
 

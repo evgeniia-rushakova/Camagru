@@ -1,17 +1,18 @@
 <?php
 include_once "php/generate_gallery.php";
-
-if(!isset($_SESSION['user'])){
+if(!isset($_SESSION['user'])|| $_SESSION['user']==false)
+{
 	header("Location: index.php");
 	exit;
 }
+$gallery = get_gallery_photos();
 $title = "Jslave Camagru";
 $header = file_get_contents("tpl/inner_header--layout.php");
-$content = file_get_contents("tpl/camagru_mail--layout.php");
+$content = file_get_contents("tpl/camagru_main--layout.php");
 $file = file_get_contents("tpl/meta-footer--layout.php");
 $file = str_replace('{title}', $title, $file);
 $file = str_replace('{header}', $header, $file);
 $file = str_replace('{content}', $content, $file);
-//$gallery = get_gallery_photos();
-//$file.=$gallery;
+$file = str_replace('{gallery}', $gallery, $file);
+
 print($file);

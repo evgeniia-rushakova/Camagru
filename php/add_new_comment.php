@@ -41,18 +41,20 @@ function add_new_comment()
 	$smtp->execute(array(
 		$author_of_photo_email_id
 	));
+	$author_info = $smtp->fetch();
+	$author_of_photo_email = $author_info['email'];
+	$need_notificate = $author_info['notifications'];
 
-	$author_of_photo_email = $smtp->fetch() ['email'];
 	$smtp = $pdo->prepare("SELECT * FROM users where user = ?");
 	$smtp->execute(array(
 		$user
 	));
-	$author_of_comment_id = $smtp->fetch() ['id'];
+	$author_of_comment_id = $smtp->fetch()['id'];
 	$date = date('Y-m-d-H-i-s');
 	$sql = "INSERT INTO comments (photo_id, date_of_comment, comment_author, comment_text) VALUES ($photo_id, '$date', $author_of_comment_id, '$comment_text')";
 	$pdo->exec($sql);
-
-	send_mail_to_user_about_new_comment($author_of_photo_email, $user, $photo, $comment_text);
+	if ($need_notificate == 1)
+		send_mail_to_user_about_new_comment($author_of_photo_email, $user, $photo, $comment_text);
 	header("Location: " . $_SERVER["HTTP_REFERER"]);
 }
 

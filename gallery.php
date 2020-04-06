@@ -1,11 +1,11 @@
 <?php
 include_once "php/generate_gallery.php";
-
-if(!isset($_SESSION['user'])){
+/*session_start();
+if(!isset($_SESSION['user'])|| $_SESSION['user']==false)
+{
 	header("Location: index.php");
 	exit;
-}
-
+}*/
 $title = "Gallery";
 $test = get_gallery_photos();
 $header = file_get_contents("tpl/inner_header--layout.php");
