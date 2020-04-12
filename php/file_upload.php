@@ -33,7 +33,6 @@ function is_uploaded_file_valid($file)
 {
 	$type = explode("/",$file['userfile']['type'])[0];
 	$err = $file['userfile']['error'];
-
 	if (check_errors($err) == true)
 		return (false);
 	if ($file['userfile']['size'] == 0 || $file['userfile']['name'] == null )
@@ -42,16 +41,9 @@ function is_uploaded_file_valid($file)
 		return (false);
 	return (true);
 }
-
+/*
 function add_info_about_photo($item)
 {
-	/*
-
-
-
-		$sql= "INSERT INTO photos (photo, author, date, description, likes, dislikes) VALUES ('$photo', '$author', '$date', '$description', '0', '0')";
-		$pdo->exec($sql);*/
-	////////////////////////////////////////////////////////
 	$mydb="mydb";
 	$date = date('Y-m-d-H-i-s');
 	$description =clean_data($_POST['description']);
@@ -65,19 +57,24 @@ function add_info_about_photo($item)
 	$sql= "INSERT INTO photos (photo, author_id, date, description, likes, dislikes) VALUES ('$photo', '$id', '$date', '$description', '0', '0')";
 	$pdo->exec($sql);
 	$pdo = null;
-	///////////////////////////////////////////////////////
 	header("Location: ".$_SERVER["HTTP_REFERER"]);
 }
+*/
 
-if (is_uploaded_file($_FILES['userfile']['tmp_name']) == true)
+
+function check_uploaded_file()
 {
-	$dest_dir = "../gallery_photos";
-	$name = $_FILES['userfile']['name'];
-	if (is_uploaded_file_valid($_FILES))
+	if (is_uploaded_file($_FILES['userfile']['tmp_name']) == true)
 	{
-		$res = move_uploaded_file($_FILES['userfile']['tmp_name'], "$dest_dir/$name");
-		add_info_about_photo($name);
+	//	$dest_dir = "../gallery_photos";
+//		$name = $_FILES['userfile']['name'];
+		if (is_uploaded_file_valid($_FILES))
+		{
+			return (true);
+			//$res = move_uploaded_file($_FILES['userfile']['tmp_name'], "$dest_dir/$name");
+			//	add_info_about_photo($name);
+		}
 	}
 }
-else
-	echo "error";
+
+

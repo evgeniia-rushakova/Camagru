@@ -29,11 +29,16 @@ function generate_comments($pdo, $photo)
 		$smtp->execute(array($author_id));
 		$author = $smtp->fetch()['user'];
 
+		$smtp = $pdo->prepare("SELECT name FROM avatars WHERE id = ?");
+		$smtp->execute(array($author_id));
+		$user_avatar = $smtp->fetch()['name'];
+
 		$date = $item['date_of_comment'];
 		$text = $item['comment_text'];
 		$template = str_replace('{comment-author}', $author, $template);
 		$template = str_replace('{comment-date}', $date, $template);
 		$template = str_replace('{comment-text}', $text, $template);
+		$template = str_replace('{user_avatar}', $user_avatar, $template);
 		$final.=$template;
 	}
 	return ($final);
@@ -44,7 +49,8 @@ function render_inner_content_popup($content)
 	$mydb = "mydb";
 	$pdo = connect_to_database($mydb);
 	$arrlong= explode("/",$_SERVER['QUERY_STRING']);
-	$filename = $arrlong[count($arrlong) -1];
+	$filename = html_entity_decode($arrlong[count($arrlong) -1]);
+
 	$info = pull_from_base($filename, $pdo);
 	if ($info)
 	{
@@ -53,9 +59,9 @@ function render_inner_content_popup($content)
 		$likes = $info['likes'];
 		$dislikes = $info['dislikes'];
 		$description = $info['description'];
-		$img_src = "../gallery_photos/$filename";
-		$width = "250px";
-		$height = "250px";
+		$img_src = "../img/gallery_photos/$filename";
+		$width = "auto";
+		$height = "auto";
 
 		$smtp = $pdo->prepare("SELECT * FROM photos WHERE photo = ?");
 		$smtp->execute(array($filename));
@@ -63,9 +69,19 @@ function render_inner_content_popup($content)
 		$comments = generate_comments($pdo, $photo_id);
 		$template = $content;
 
-		$smtp = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+		$smtp = $pdo->prepare("SELECT * FROM avatars WHERE author_id = ?");
 		$smtp->execute(array($author_id));
-		$author = $smtp->fetch()['user'];
+		$author = $smtp->fetch()['name'];
+
+
+		$smtp = $pdo->prepare("SELECT * FROM users WHERE user = ?");
+		$smtp->execute(array($_SESSION['user']));
+		$id_author = $smtp->fetch()['id'];
+
+		$smtp = $pdo->prepare("SELECT * FROM avatars WHERE author_id = ?");
+		$smtp->execute(array($id_author));
+		$user_avatar = $smtp->fetch()['name'];
+
 		$template = str_replace('{img_src}', $img_src, $template);
 		$template = str_replace('{img_alt}', "$filename", $template);
 		$template = str_replace('{img_width}', $width, $template);
@@ -75,7 +91,8 @@ function render_inner_content_popup($content)
 		$template = str_replace('{photo-date}', "$date", $template);
 		$template = str_replace('{photo-author}', "$author", $template);
 		$template = str_replace('{description}', "$description", $template);
-
+		$template = str_replace('{avatar_src}', $author, $template);
+		$template = str_replace('{user_avatar_src}', $user_avatar, $template);
 		$template = str_replace('{comments}', "$comments", $template);
 		return ($template);
 	}

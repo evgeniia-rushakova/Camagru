@@ -1,34 +1,66 @@
-<div class ="cabinet-container" style="position: relative;">
-    <div class="profile">
-        <h3 class="profile__title">Settings</h3>
-        <ul class="profile__info">
-            <li class="profile__item">Username: {username} <a href="#">change</a></li>
-            <li class="profile__item">E-mail: {useremail} <a href="#">change</a></li>
-            <li class="profile__item">Password:  <a href="#">change</a></li>
-            <li class="profile__item">Send me notifications about new comments : {notif}<a href="../php/settings.php?act=notifications&val={notif}">change</a></li>
-        </ul>
-        <div class="profile__photos">
-            <h4 class="profile__photos__title">Yor photos:</h4>
-            {gallery}
+
+    <div class="cabinet-container">
+        <div class="cabinet__avatar">
+            <h3 class="profile__title">Avatar</h3>
+            <div class="cabinet__avatar__upload--wrapper">
+                <img class="cabinet__avatar-photo" src="img/avatars/{user_avatar}" alt="avatar of user">
+                <form enctype="multipart/form-data" action="../php/avatar_upload.php" class="cabinet__avatar-form" method="post">
+                    <label for="file" class="cabinet__avatar__upload-label">Choose file...</label>
+                    <input class="cabinet__avatar__upload" type="file" required id="file" name="userfile">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="300000">
+                    <button class="cabinet__avatar-button" type="submit">change</button>
+                </form>
+            </div>
         </div>
-        <div class="profile__comments">
-            <h4 class="profile__comments__title"> Your comments:</h4>
-            {comments}
+        <div class="cabinet__profile profile">
+            <h3 class="profile__title">Settings</h3>
+            <table class="profile__info">
+                <tr class="profile__table-row">
+                    <th class="profile__item">Username:</th>
+                    <th class="profile__value"> {username}</th>
+                    <th class="profile__change">change</th>
+                </tr>
+                <tr class="profile__table-row">
+                    <th class="profile__item">E-mail:</th>
+                    <th class="profile__value"> {useremail} </th>
+                    <th class="profile__change">change</th>
+                </tr>
+                <tr class="profile__table-row">
+                    <th class="profile__item">Password:</th>
+                    <th class="profile__value">&#8226 &#8226 &#8226 &#8226 &#8226 &#8226 </th>
+                    <th class="profile__change">change</th>
+                </tr>
+                <tr class="profile__table-row">
+                    <th class="profile__item">E-mail notifications:</th>
+                    <th class="profile__value">{notif}</th>
+                    <th class="profile__change">change</th>
+                </tr>
+            </table>
+            <div class="profile__photos">
+                <h3 class="profile__title">Yor photos:</h3>
+                <div class="profile__photos-container">
+                    {gallery}
+                </div>
+            </div>
+            <div class="profile__comments">
+                <h3 class="profile__title"> Your comments:</h3>
+                {comments}
+            </div>
         </div>
     </div>
-</div>
-<template id="change_username">
-    <div class="popup popup__change-username" style="border: 2px solid purple;">
-        <form action="../php/settings.php">
-            <button>close</button>
-            <input type="hidden" name="act" value="change_username">
-            <label for="password">Your password: <input type="password" name="password"></label>
-            <label for="newusername">New username: <input type="text" name="newusername" id=""></label>
-            <label for="newusername2">Please, repeat: <input type="text" name="newusername2" id=""></label>
-            <input type="submit">
-        </form>
-    </div>
-</template>
+    <template id="change_username">
+        <div class="popup popup__change-username" style="border: 2px solid purple;">
+            <form action="../php/settings.php">
+                <button>close</button>
+                <input type="hidden" name="act" value="change_username">
+                <label for="password">Your password: <input type="password" name="password"></label>
+                <label for="newusername">New username: <input type="text" name="newusername" id=""></label>
+                <label for="newusername2">Please, repeat: <input type="text" name="newusername2" id=""></label>
+                <input type="submit">
+            </form>
+        </div>
+    </template>
+
 <template id="change_password">
     <div class="popup popup__change-password" style="border: 2px solid purple;">
         <form action="../php/settings.php">

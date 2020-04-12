@@ -1,7 +1,7 @@
 <?php
 function add_admins_photo_into_base($pdo)
 {
-	$photos_array = scandir("gallery_photos");
+	$photos_array = scandir("img/gallery_photos");
 	unset($photos_array[0]);
 	unset($photos_array[1]);
 	foreach ($photos_array as $item)
@@ -15,6 +15,7 @@ function add_admins_photo_into_base($pdo)
 		{
 			$sql = "INSERT INTO photos (photo, author_id, date, description, likes, dislikes) VALUES ('$item', '1', '$date', '$description', '0', '0')";
 			$pdo->exec($sql);
+
 		}
 	}
 }
@@ -66,6 +67,24 @@ function create_users_table($pdo)
 		$newstringintable = "INSERT INTO  Users (user, email, password, accepted_email, token, notifications) VALUES ('admin','admin@admin', '$password', true, '0', true)";
 		$pdo->exec($newstringintable);
 	}
+}
+
+function create_avatars_table($pdo)
+{
+	$table = "CREATE TABLE IF NOT EXISTS avatars(
+    	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    	name VARCHAR(50) NOT NULL,
+    	author_id INT(6) UNSIGNED NOT NULL,
+    	FOREIGN KEY (author_id) REFERENCES users(id))ENGINE=INNODB";
+	$pdo->exec($table);
+	$sql = $pdo->prepare("SELECT COUNT(*) FROM avatars WHERE author_id = '1'");
+	$sql->execute();
+	$admin_exists = $sql->fetchColumn();
+	if ($admin_exists == false)
+	{
+		$newstringintable = "INSERT INTO  avatars (name, author_id) VALUES ('admin_avatar.jpg', '1')";
+		$pdo->exec($newstringintable);
+	}
 
 }
 
@@ -90,6 +109,7 @@ function create_database()
 	create_users_table($pdo);
 	create_list_of_photos_table($pdo);
 	create_comments_table($pdo);
+	create_avatars_table($pdo);
 	add_admins_photo_into_base($pdo);
 	$pdo = null;
 }

@@ -30,6 +30,15 @@ function add_user_into_table($pdo, $arr)
 	$arr[] = $token;
 	$newstringintable = "INSERT INTO Users (user, email, password, accepted_email, token, notifications) VALUES ('$newuser','$newwuseremail', '$newwuserpass', false, '$token', true)";
 	$pdo->exec($newstringintable);
+
+	$smtp = $pdo->prepare("SELECT id FROM users WHERE user = ?");
+	$smtp->execute(array($newuser));
+	$author = $smtp->fetch()['id'];
+
+	$new_filename = "empty__avatar.png";
+	$smtp = "INSERT INTO avatars (name, author_id) VALUES ('$new_filename', '$author')";
+	$pdo->exec($smtp);
+
 	if (send_mail_to_user_confirm_email($arr) == false)
 		echo "EMAIL NOT SENDED!\n";
 	else

@@ -1,11 +1,15 @@
 <?php
-include_once "php/generate_gallery.php";
+include_once "php/cabinet_functions.php";
 if(!isset($_SESSION['user'])|| $_SESSION['user']==false)
 {
 	header("Location: index.php");
 	exit;
 }
-$gallery = get_gallery_photos();
+
+
+$pdo= connect_to_database("mydb");
+$info = get_user_info($pdo);
+$gallery = get_photos_content($info['photos'], $pdo);
 $title = "Jslave Camagru";
 $header = file_get_contents("tpl/inner_header--layout.php");
 $content = file_get_contents("tpl/camagru_main--layout.php");
