@@ -1,9 +1,8 @@
 <?php
-include_once "databases.php";
+include_once "../config/connect.php";
 include_once "validity.php";
 
-$mydb="mydb";
-$pdo = connect_to_database($mydb);
+$pdo = connect_to_database();
 
 function send_mail_to_user_confirm_email($arr)
 {

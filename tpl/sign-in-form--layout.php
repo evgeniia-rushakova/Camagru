@@ -1,18 +1,3 @@
-
-<!--<div class="sign-in-form-container">
-        <h3 class="sign-in-form__header">Please, sign in:</h3>
-        <form action="../php/login.php" class="sign-in-form">
-            <label class="sign-in-form__label" for="sign-in-form__email">Your login</label>
-            <input class="sign-in-form__email" id="sign-in-form__email" type="text" name="user">
-            <label class="sign-in-form__label" for="sign-in-form__password">Your password</label>
-            <input class="sign-in-form__pass" id="sign-in-form__password" type="password" name="password">
-            <div class="sign-in-form__help-container">
-                <a href="../forgot_password.php" class="sign-in-form__forgot-reg">Forgot Password?</a>
-                <a href="../inner_reg.php" class="sign-in-form__forgot-reg">Register</a>
-            </div>
-            <button class="sign-in-form__submit" type="submit">Enter</button>
-        </form>
-    </div>-->
 <div class="index__container">
     <div class="index__gallery">
         <img src="../img/isaac-quesada-w8--SP1DLEw-unsplashdesk.png" alt="gallery-photo" class="index__gallery-photo photo1" width="362" height="260">
@@ -30,7 +15,7 @@
             <label class="sign-in-form__label" for="sign-in-form__password">Your password</label>
             <input class="sign-in-form__field" id="sign-in-form__password" type="password" name="password">
             <div class="sign-in-form__help-container">
-                <a href="../forgot_password.php" class="sign-in-form__forgot">Forgot password?</a>
+                <a href="#" class="sign-in-form__forgot">Forgot password?</a>
                 <button class="sign-in-form__submit" type="submit">Sign in</button>
                 <p class="sign-in-form__reg">No account? <a href="../inner_reg.php" class="sign-in-form__reg-link">Create one</a></p>
             </div>

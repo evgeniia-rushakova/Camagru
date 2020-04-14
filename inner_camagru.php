@@ -1,5 +1,7 @@
 <?php
 include_once "php/cabinet_functions.php";
+include_once "tpl/popups--layout.php";
+include_once "config/connect.php";
 if(!isset($_SESSION['user'])|| $_SESSION['user']==false)
 {
 	header("Location: index.php");
@@ -7,7 +9,7 @@ if(!isset($_SESSION['user'])|| $_SESSION['user']==false)
 }
 
 
-$pdo= connect_to_database("mydb");
+$pdo= connect_to_database();
 $info = get_user_info($pdo);
 $gallery = get_photos_content($info['photos'], $pdo);
 $title = "Jslave Camagru";
@@ -18,5 +20,9 @@ $file = str_replace('{title}', $title, $file);
 $file = str_replace('{header}', $header, $file);
 $file = str_replace('{content}', $content, $file);
 $file = str_replace('{gallery}', $gallery, $file);
-
+$templates=$photo . $answer;
+$scripts = "";
+$file = str_replace('{templates}',$templates, $file);
+$file = str_replace('{scripts}',$scripts, $file);
+$pdo = null;
 print($file);

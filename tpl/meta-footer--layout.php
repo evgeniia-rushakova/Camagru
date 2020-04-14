@@ -30,5 +30,7 @@
         </div>
     </div>
 </footer>
+{templates}
+{scripts}
 </body>
 </html>

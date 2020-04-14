@@ -1,6 +1,6 @@
 <?php
 
-include_once "php/databases.php";
+//include_once "config/connect.php";
 include_once "php/cabinet_functions.php";
 session_start();
 
@@ -38,6 +38,7 @@ function get_photos_content($photos, $pdo)
 		$img_alt = $sql->fetchColumn();
 		$img_src = "../img/gallery_photos/" . $item['photo'];
 		$template = $template_origin;
+		$template = str_replace('{img_name}', $item['photo'], $template);
 		$template = str_replace('{img_src}', $img_src, $template);
 		$template = str_replace('{img_alt}', "$img_alt", $template);
 		$template = str_replace('{img_width}', $width, $template);
@@ -67,7 +68,7 @@ function get_comments_content($comments, $pdo)
 		$width = "70px";
 		$height = "70px";
 
-		$img_src = "../gallery_photos/" . $photo;
+		$img_src = "../img/gallery_photos/" . $photo;
 
 
 		$date = $item['date_of_comment'];

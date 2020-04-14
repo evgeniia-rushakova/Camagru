@@ -1,5 +1,5 @@
 <?php
-include_once "databases.php";
+include_once "config/connect.php";
 session_start();
 function get_gallery_photos()
 {
@@ -10,8 +10,7 @@ function get_gallery_photos()
 	$width = "150px";
 	$height = "auto";
 	$template_origin = file_get_contents("tpl/photo_in_gallery--layout.php");
-	$mydb="mydb";
-	$pdo =  connect_to_database($mydb);
+	$pdo =  connect_to_database();
 	foreach ($photos_array as $item)
 	{
 		$sql = $pdo->prepare("SELECT description FROM photos WHERE photo = ?") ;

@@ -1,11 +1,14 @@
 <?php
-include_once "php/databases.php";
-session_start();
+include_once "config/connect.php";
+include_once "tpl/popups--layout.php";
+include_once "php/cabinet_functions.php";
+
 if(!isset($_SESSION['user'])|| $_SESSION['user']==false)
 {
 	header("Location: index.php");
 	exit;
 }
+
 function pull_from_base($filename, $pdo)
 {
 	$check = $pdo->prepare("SELECT * FROM photos where photo = ?");
@@ -46,8 +49,7 @@ function generate_comments($pdo, $photo)
 
 function render_inner_content_popup($content)
 {
-	$mydb = "mydb";
-	$pdo = connect_to_database($mydb);
+	$pdo = connect_to_database();
 	$arrlong= explode("/",$_SERVER['QUERY_STRING']);
 	$filename = html_entity_decode($arrlong[count($arrlong) -1]);
 
@@ -69,18 +71,23 @@ function render_inner_content_popup($content)
 		$comments = generate_comments($pdo, $photo_id);
 		$template = $content;
 
-		$smtp = $pdo->prepare("SELECT * FROM avatars WHERE author_id = ?");
+		$smtp = $pdo->prepare("SELECT * FROM users WHERE id = ?");
 		$smtp->execute(array($author_id));
-		$author = $smtp->fetch()['name'];
-
+		$author_photo_info = $smtp->fetch();
+		$author_name = $author_photo_info['user'];
 
 		$smtp = $pdo->prepare("SELECT * FROM users WHERE user = ?");
 		$smtp->execute(array($_SESSION['user']));
-		$id_author = $smtp->fetch()['id'];
+		$id_current_user = $smtp->fetch()['id'];
 
 		$smtp = $pdo->prepare("SELECT * FROM avatars WHERE author_id = ?");
-		$smtp->execute(array($id_author));
-		$user_avatar = $smtp->fetch()['name'];
+		$smtp->execute(array($id_current_user));
+		$user_avatar_src = $smtp->fetch()['name'];
+
+
+		$smtp = $pdo->prepare("SELECT * FROM avatars WHERE author_id = ?");
+		$smtp->execute(array($author_id));
+		$author_avatar_src = $smtp->fetch()['name'];
 
 		$template = str_replace('{img_src}', $img_src, $template);
 		$template = str_replace('{img_alt}', "$filename", $template);
@@ -89,10 +96,10 @@ function render_inner_content_popup($content)
 		$template = str_replace('{likes}', "$likes", $template);
 		$template = str_replace('{dislikes}', "$dislikes", $template);
 		$template = str_replace('{photo-date}', "$date", $template);
-		$template = str_replace('{photo-author}', "$author", $template);
+		$template = str_replace('{photo-author_name}', "$author_name", $template);//
 		$template = str_replace('{description}', "$description", $template);
-		$template = str_replace('{avatar_src}', $author, $template);
-		$template = str_replace('{user_avatar_src}', $user_avatar, $template);
+		$template = str_replace('{avatar_author_src}', $author_avatar_src, $template);////////////
+		$template = str_replace('{current_user_avatar_src}', $user_avatar_src, $template);
 		$template = str_replace('{comments}', "$comments", $template);
 		return ($template);
 	}
@@ -108,5 +115,8 @@ $file = file_get_contents("tpl/meta-footer--layout.php");
 $file = str_replace('{title}', $title, $file);
 $file = str_replace('{header}', $header, $file);
 $file = str_replace('{content}', $content, $file);
-
+$templates=$photo . $answer;
+$scripts = "";
+$file = str_replace('{templates}',$templates, $file);
+$file = str_replace('{scripts}',$scripts, $file);
 print($file);

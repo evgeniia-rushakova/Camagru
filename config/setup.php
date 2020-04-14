@@ -1,7 +1,15 @@
 <?php
+
+include_once 'database.php';
+
+$db_dsn =  $DB_DSN;
+$db_user = $DB_USER;
+$db_name = $DB_NAME;
+$db_pass = $DB_PASSWORD;
+
 function add_admins_photo_into_base($pdo)
 {
-	$photos_array = scandir("img/gallery_photos");
+	$photos_array = scandir("../img/gallery_photos");
 	unset($photos_array[0]);
 	unset($photos_array[1]);
 	foreach ($photos_array as $item)
@@ -15,7 +23,6 @@ function add_admins_photo_into_base($pdo)
 		{
 			$sql = "INSERT INTO photos (photo, author_id, date, description, likes, dislikes) VALUES ('$item', '1', '$date', '$description', '0', '0')";
 			$pdo->exec($sql);
-
 		}
 	}
 }
@@ -85,22 +92,33 @@ function create_avatars_table($pdo)
 		$newstringintable = "INSERT INTO  avatars (name, author_id) VALUES ('admin_avatar.jpg', '1')";
 		$pdo->exec($newstringintable);
 	}
+}
 
+function create_likes_table($pdo)
+{
+	$table = "CREATE TABLE IF NOT EXISTS likes(
+    	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    	photo_id INT (6) UNSIGNED NOT NULL,
+    	who_liked_id INT(6) UNSIGNED NOT NULL,
+    	value int(6) NOT NULL ,
+    	FOREIGN KEY (photo_id) REFERENCES photos(id) ON DELETE CASCADE,
+    	FOREIGN KEY (who_liked_id) REFERENCES users(id))ENGINE=INNODB";
+	$pdo->exec($table);
 }
 
 function create_database()
 {
-	$servername = "localhost";
-	$adminname = "admin";
-	$adminpass = "12345";
-	$dbname = "myDB";
+	global $db_dsn;
+	global $db_user;
+	global $db_name;
+	global $db_pass;
 	try
 	{
-		$pdo = new PDO("mysql:host=$servername", $adminname, $adminpass);
+		$pdo = new PDO($db_dsn, $db_user, $db_pass);
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-		$pdo->query("CREATE DATABASE IF NOT EXISTS $dbname");
-		$pdo->query("use $dbname");
+		$pdo->query("CREATE DATABASE IF NOT EXISTS $db_name");
+		$pdo->query("use $db_name");
 	}
 	catch(PDOException $e)
 	{
@@ -110,26 +128,36 @@ function create_database()
 	create_list_of_photos_table($pdo);
 	create_comments_table($pdo);
 	create_avatars_table($pdo);
+	create_likes_table($pdo);
 	add_admins_photo_into_base($pdo);
 	$pdo = null;
+	return (true);
 }
+create_database();
 
-function connect_to_database($dbname)
-{
-	$servername = "localhost";
-	$adminname = "admin";
-	$adminpass = "12345";
-	try
-	{
-		$pdo = new PDO("mysql:host=$servername", $adminname, $adminpass);
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-		$pdo->query("use $dbname");
-	}
-	catch(PDOException $e)
-	{
-		die("Database connection failed: " . $e->getMessage());
-	}
-	return ($pdo);
-}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="preload" href="../css/style.css" as="style">
+	<link rel="stylesheet" type="text/css" href="../css/normalize.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<title>Jslave Camagru - Setup</title>
+</head>
+<body>
+<main>
+	<div style="width:300px; margin: 150px auto;">
+		<h2 class="profile__title" style="text-align: center;">Database create successfully</h2>
+		<h2 class="profile__title" style="text-align: center;">Tables create successfully</h2>
+		<form action="../index.php">
+			<button class="sign-in-form__submit"autofocus="autofocus" tabindex="1" style="width: 300px; padding: 10px 20px;">go to CamaGru</button>
+		</form>
+	</div>
+</main>
+</body>
+</html>
 

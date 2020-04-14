@@ -1,11 +1,10 @@
 <?php
-include_once "databases.php";
+include_once "../config/connect.php";
 include_once "validity.php";
 session_start();
 
 
-$pdo = connect_to_database("mydb");
-
+$pdo = connect_to_database();
 
 function get_user_info_arr($user)
 {
@@ -22,7 +21,7 @@ function send_mail_about_changing_settings($to, $subject, $message)
 		'From' => 'cat_lover@list.ru',
 		'Reply-To' => 'cat_lover@list.ru'
 	);
-	$result = mail($to, $subject, $message, $headers);
+	mail($to, $subject, $message, $headers);
 }
 
 function change_username()

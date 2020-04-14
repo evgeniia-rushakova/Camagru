@@ -1,13 +1,12 @@
 <?php
-include_once "databases.php";
+include_once "../config/connect.php";
 
 $email = $_GET['user'];
 $token = $_GET['token'];
 
 function check_token($email, $token)
 {
-	$mydb = "mydb";
-	$pdo = connect_to_database($mydb);
+	$pdo = connect_to_database();
 	$check = $pdo->prepare("SELECT COUNT(*) FROM Users where email = ? AND token = ?");
 	$check->execute(array(
 		$email,

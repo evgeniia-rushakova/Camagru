@@ -1,5 +1,5 @@
 <?php
-include_once "databases.php";
+include_once "../config/connect.php";
 include_once "validity.php";
 
 session_start();
@@ -9,7 +9,7 @@ function send_mail_to_user_about_new_comment($author_email, $comment_author, $ph
 {
 	$subject = "New comment to yur photo!";
 	$to = $author_email;
-	$link = "http://localhost/add_popup_photo.php?../gallery_photos/" . $photo;
+	$link = "http://localhost/photo_page.php?../gallery_photos/" . $photo;
 
 	$message = "Hello! User $comment_author commented your <a href=$link>photo</a>: $comment_text";
 	$headers = array(
@@ -22,8 +22,7 @@ function send_mail_to_user_about_new_comment($author_email, $comment_author, $ph
 function add_new_comment()
 {
 	$user = $_SESSION['user'];
-	$mydb = "mydb";
-	$pdo = connect_to_database($mydb);
+	$pdo = connect_to_database();
 
 	$photo_name = $_GET['main-photo'];
 	$comment_text = clean_data($_GET['comment']);
@@ -53,6 +52,7 @@ function add_new_comment()
 	$date = date('Y-m-d-H-i-s');
 	$sql = "INSERT INTO comments (photo_id, date_of_comment, comment_author, comment_text) VALUES ($photo_id, '$date', $author_of_comment_id, '$comment_text')";
 	$pdo->exec($sql);
+	$pdo = null;
 	if ($need_notificate == 1)
 		send_mail_to_user_about_new_comment($author_of_photo_email, $user, $photo, $comment_text);
 	header("Location: " . $_SERVER["HTTP_REFERER"]);

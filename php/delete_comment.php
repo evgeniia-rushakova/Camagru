@@ -1,13 +1,12 @@
 <?php
-include_once "databases.php";
+include_once "../config/connect.php";
 
 session_start();
 check_user_is_parent_of_comment();
 
 function delete_comment_from_base($comment_id)
 {
-	$mydb = "mydb";
-	$pdo = connect_to_database($mydb);
+	$pdo = connect_to_database();
 
 	$email_sql_author = $pdo->prepare("DELETE FROM comments WHERE id = ?");
 	$email_sql_author->execute(array($comment_id));
@@ -17,9 +16,8 @@ function delete_comment_from_base($comment_id)
 
 function check_user_is_parent_of_comment()
 {
-	$mydb = "mydb";
 	$user = $_SESSION['user'];
-	$pdo = connect_to_database($mydb);
+	$pdo = connect_to_database();
 	$comment_text = $_GET['text'];
 	$comment_date = $_GET['date'];
 	$smtp = $pdo->prepare("SELECT * FROM Users WHERE user = ?");

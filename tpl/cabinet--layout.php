@@ -18,17 +18,17 @@
                 <tr class="profile__table-row">
                     <th class="profile__item">Username:</th>
                     <th class="profile__value"> {username}</th>
-                    <th class="profile__change">change</th>
+                    <th class="profile__change profile__change--username">change</th>
                 </tr>
                 <tr class="profile__table-row">
                     <th class="profile__item">E-mail:</th>
                     <th class="profile__value"> {useremail} </th>
-                    <th class="profile__change">change</th>
+                    <th class="profile__change profile__change--email">change</th>
                 </tr>
                 <tr class="profile__table-row">
                     <th class="profile__item">Password:</th>
                     <th class="profile__value">&#8226 &#8226 &#8226 &#8226 &#8226 &#8226 </th>
-                    <th class="profile__change">change</th>
+                    <th class="profile__change profile__change--password">change</th>
                 </tr>
                 <tr class="profile__table-row">
                     <th class="profile__item">E-mail notifications:</th>
@@ -48,44 +48,3 @@
             </div>
         </div>
     </div>
-    <template id="change_username">
-        <div class="popup popup__change-username" style="border: 2px solid purple;">
-            <form action="../php/settings.php">
-                <button>close</button>
-                <input type="hidden" name="act" value="change_username">
-                <label for="password">Your password: <input type="password" name="password"></label>
-                <label for="newusername">New username: <input type="text" name="newusername" id=""></label>
-                <label for="newusername2">Please, repeat: <input type="text" name="newusername2" id=""></label>
-                <input type="submit">
-            </form>
-        </div>
-    </template>
-
-<template id="change_password">
-    <div class="popup popup__change-password" style="border: 2px solid purple;">
-        <form action="../php/settings.php">
-            <button>close</button>
-            <input type="hidden" name="act" value="change_password">
-            <label for="oldpassword">Your old password:<input type="password" name="password"></label>
-            <label for="newpassword">New password: <input type="text" name="newpassword" id=""></label>
-            <label for="newpassword2">Please, repeat: <input type="text" name="newrpassword2" id=""></label>
-            <input type="submit">
-        </form>
-    </div>
-</template>
-<template id="change_email">
-    <div class="popup popup__change-email" style="border: 2px solid purple;">
-        <form action="../php/settings.php">
-            <button>close</button>
-            <input type="hidden" name="act" value="change_email">
-            <label for="password">Your password: <input type="password" name="password"></label>
-            <label for="newusername">New email: <input type="text" name="email" id="newusername"></label>
-            <label for="newusername2">Please, repeat: <input type="text" name="email2" id="newusername2"></label>
-            <input type="submit">
-        </form>
-    </div>
-</template>
-<template id="popup popup__result">
-    <div><p>answer</p>
-    <button>ok</button></div>
-</template>

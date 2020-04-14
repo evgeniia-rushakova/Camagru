@@ -1,14 +1,11 @@
 <?php
 include_once "validity.php";
-include_once "databases.php";
+include_once "../config/connect.php";
 
 check_registration_for_user();
-
-
 function open_session($user)
 {
-	$mydb="mydb";
-	$pdo = connect_to_database($mydb);;
+	$pdo = connect_to_database();;
 	$find_user= $pdo->prepare("SELECT user FROM users WHERE user = ?");
 	$find_user->execute([$user]);
 	$user = $find_user->fetchColumn();
@@ -20,8 +17,7 @@ function open_session($user)
 
 function check_registration_for_user()
 {
-	$mydb="mydb";
-	$pdo = connect_to_database($mydb);;
+	$pdo = connect_to_database();;
 	$arr = check_validity();
 	if ($arr != NULL) {
 		$user = $arr[0];
@@ -33,7 +29,6 @@ function check_registration_for_user()
 
 		$smtp_pass =  $pdo->prepare("SELECT password FROM users WHERE user = ? AND accepted_email = ?");
 		$smtp_pass->execute(array($user, "1"));
-		//$pass_hash=$smtp_pass->fetch()['password'];
 		$pass_hash = $smtp_pass->fetch()['password'];
 		$check_pass = password_verify($pass, $pass_hash);
 		if ($check_pass == false)
@@ -42,9 +37,7 @@ function check_registration_for_user()
 			exit;
 		}
 		if ($count_email == 1 && $check_pass == true)
-		{
 			open_session($user);
-		}
 		else
 			echo "problem!email not confirmed";
 	}
