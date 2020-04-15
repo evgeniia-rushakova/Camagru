@@ -17,13 +17,17 @@ function check_token($email, $token)
 	{
 		$confirm = $pdo->prepare("UPDATE Users SET accepted_email = TRUE WHERE email = ?");
 		$confirm->execute([$email]);
+		$smtp = $pdo->prepare("UPDATE users SET token = ? where email = ?");
+		$rand_token =bin2hex(random_bytes(20));
+		$smtp->execute(array($rand_token, $email));
 		return (1);
 	}
 	$pdo = null;
 	return (0);
 }
 
-if (check_token($email, $token) == 1) echo "EMAIL_CONFIRMED";
-else echo "EMAIL IS NOT CONFIRMED";
-header("Location: " . "../index.php"); //добавить сообщение типа успех или нет
+if (check_token($email, $token) == 1)
+	echo "<script>alert('E-mail confirmed!'); location.href='../index.php';</script>";
+else
+	echo "<script>alert('Token is incorrect!Please get new token by e-mail.'); location.href='../index.php';</script>";
 

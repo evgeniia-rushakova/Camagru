@@ -1,6 +1,6 @@
 <?php
 
-include_once ("file_upload.php");
+include_once("file_upload_validity.php");
 include_once "../config/connect.php";
 
 if (check_uploaded_file() == true)
@@ -17,8 +17,8 @@ if (check_uploaded_file() == true)
 	$smtp->execute(array($_SESSION['user']));
 	$author = $smtp->fetch()['id'];
 
-	$smtp = $pdo->prepare("UPDATE avatars SET name = ? WHERE id = ?");
+	$smtp = $pdo->prepare("UPDATE avatars SET name = ? WHERE author_id = ?");
 	$smtp->execute(array($new_filename, $author));
 	$pdo = null;
-	header("Location: " . $_SERVER['PHP_SELF']);
+	header("Location: " . "../cabinet.php");
 }

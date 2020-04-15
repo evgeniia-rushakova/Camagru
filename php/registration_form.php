@@ -34,17 +34,15 @@ function add_user_into_table($pdo, $arr)
 	$smtp->execute(array($newuser));
 	$author = $smtp->fetch()['id'];
 
-	$new_filename = "empty__avatar.png";
+	$new_filename = "empty_avatar.png";
 	$smtp = "INSERT INTO avatars (name, author_id) VALUES ('$new_filename', '$author')";
 	$pdo->exec($smtp);
 
 	if (send_mail_to_user_confirm_email($arr) == false)
-		echo "EMAIL NOT SENDED!\n";
+		echo "<script>alert('Error!E-mail is not sended.'); location.href='../index.php';</script>";
 	else
-	{
-		header("Location: "."../index.php");//добавить сообщение типа проверь почту
-		print("  <script>alert( 'Подтвержденоо' );</script>");
-	}
+		echo "<script>alert('Please, check your e-mail!'); location.href='../index.php';</script>";
+
 }
 
 function is_this_is_new_user($pdo, $arr)
@@ -65,8 +63,8 @@ if ($result_arr = check_validity())
 		add_user_into_table($pdo, $result_arr);
 	}
 	else
-		echo "USER IS ALREADY IN TABLE" . PHP_EOL;//add popup
+		echo "<script>alert('Error!This username is busy.Try another.'); location.href='../index.php';</script>";
 	$pdo = null;
 }
 else
-	echo "BAD DATA\n";
+	echo "<script>alert('Error!Bad data'); location.href='../index.php';</script>";

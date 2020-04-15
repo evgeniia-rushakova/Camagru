@@ -4,10 +4,12 @@
             <h3 class="profile__title">Avatar</h3>
             <div class="cabinet__avatar__upload--wrapper">
                 <img class="cabinet__avatar-photo" src="img/avatars/{user_avatar}" alt="avatar of user">
-                <form enctype="multipart/form-data" action="../php/avatar_upload.php" class="cabinet__avatar-form" method="post">
+                <form  action="../php/avatar_upload.php" class="cabinet__avatar-form" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="type_upload" value="avatar">
                     <label for="file" class="cabinet__avatar__upload-label">Choose file...</label>
                     <input class="cabinet__avatar__upload" type="file" required id="file" name="userfile">
                     <input type="hidden" name="MAX_FILE_SIZE" value="300000">
+
                     <button class="cabinet__avatar-button" type="submit">change</button>
                 </form>
             </div>
@@ -33,7 +35,10 @@
                 <tr class="profile__table-row">
                     <th class="profile__item">E-mail notifications:</th>
                     <th class="profile__value">{notif}</th>
-                    <th class="profile__change">change</th>
+                    <th class="profile__change"><a href="../php/settings.php?act=notifications&val={notif}" style="
+    color: #f06546;
+    text-decoration: none;
+">change</a></th>
                 </tr>
             </table>
             <div class="profile__photos">

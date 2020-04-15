@@ -30,7 +30,7 @@ function get_photos_content($photos, $pdo)
 {
 	$result = "";
 	$width = "150px";
-	$height = "150px";
+	$height = "auto";
 	$template_origin = file_get_contents("tpl/photo_in_gallery--layout.php");
 	foreach ($photos as $item) {
 		$sql = $pdo->prepare("SELECT description FROM photos WHERE photo = ?");
@@ -44,6 +44,7 @@ function get_photos_content($photos, $pdo)
 		$template = str_replace('{img_width}', $width, $template);
 		$template = str_replace('{img_height}', $height, $template);
 		$template = str_replace('{description}', "$img_alt", $template);
+
 		$result .= $template;
 	}
 	return ($result);
@@ -66,7 +67,7 @@ function get_comments_content($comments, $pdo)
 		$parent = $smtp->fetch()['user'];
 
 		$width = "70px";
-		$height = "70px";
+		$height = "auto";
 
 		$img_src = "../img/gallery_photos/" . $photo;
 
@@ -96,6 +97,10 @@ function generate_profile_content($content, $info, $pdo)
 		$content = str_replace('{notif}', "yes", $content);
 	$photos_content = get_photos_content($info['photos'], $pdo);
 	$comments_content = get_comments_content($info['comments'], $pdo);
+	if(!$photos_content)
+		$photos_content = '<p class="profile__value"> No photos yet. </p>';
+	if(!$comments_content)
+		$comments_content = '<p class="profile__value"> No comments yet. </p>';
 	$content = str_replace('{gallery}', $photos_content, $content);
 	$content = str_replace('{comments}', $comments_content, $content);
 	return ($content);

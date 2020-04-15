@@ -1,21 +1,23 @@
 <div class="main-camagru-container">
-    <div class="main-camagru-wrapper">
-        <form enctype="multipart/form-data" action="../php/file_upload.php" method="post" class=" main-camagru__upload-file cabinet__avatar-form">
+    <div class="main-camagru-wrapper" style="position: relative">
+        <form action="../php/photo_to_gallery_upload.php" method="post" class=" main-camagru__upload-file cabinet__avatar-form" style="position: absolute;top: 0;
+    left: 0;" enctype="multipart/form-data">
             <input type="hidden" name="MAX_FILE_SIZE" value="300000">
             <label for="file" class="cabinet__avatar__upload-label">Choose file...</label>
-            <input class="cabinet__avatar__upload" type="file" required="" id="file">
+            <input class="cabinet__avatar__upload" type="file" required id="file" name="userfile">
             <button class="cabinet__avatar-button" type="submit">Load</button>
         </form>
-        <form action="">
+        <form action="" style="padding-top: 40px;">
             <div class="main-camagru__upload file_upload-container">
                 <div class="main-camagru__preview">
                     <video id="videoTag" src="" autoplay muted class="view--video__video"></video>
                     <div class="main-camagru__loaded-img">
+                        <img src="{uploaded_img}" alt="uploaded_img" style="width: auto;">
                     </div>
                     <div class="main-camagru__buttons buttons">
-                        <input class="buttons__camera-radio" type="radio" name="file_type" value="camera" id="radio_camera" required="">
+                        <input class="buttons__camera-radio" type="radio" name="file_type" value="camera" id="radio_camera" required checked>
                         <label class="buttons__camera-label" for="radio_camera"></label>
-                        <input class="buttons__upload-radio" type="radio" name="file_type" value="upload" id="radio_upload" required="">
+                        <input class="buttons__upload-radio" type="radio" name="file_type" value="upload" id="radio_upload" required>
                         <label class="buttons__upload-label" for="radio_upload"></label>
                     </div>
                 </div>
@@ -46,22 +48,3 @@
        {gallery}
     </aside>
 </div>
-<script>
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||  navigator.mozGetUserMedia;
-    if (navigator.getUserMedia) {
-        navigator.getUserMedia({ audio: true, video: { width: 400, height: 400 } },
-            function(stream) {
-                var video = document.querySelector('video');
-                video.srcObject = stream;
-                video.onloadedmetadata = function(e) {
-                    video.play();
-                };
-            },
-            function(err) {
-                console.log("The following error occurred: " + err.name);
-            }
-        );
-    } else {
-        console.log("getUserMedia not supported");
-    }
-</script>

@@ -33,13 +33,13 @@ function check_registration_for_user()
 		$check_pass = password_verify($pass, $pass_hash);
 		if ($check_pass == false)
 		{
-			echo "wrong pass";
+			echo "<script>alert('Registration comlete!'); location.href='../index.php';</script>";
 			exit;
 		}
 		if ($count_email == 1 && $check_pass == true)
 			open_session($user);
 		else
-			echo "problem!email not confirmed";
+			echo "<script>alert('Error!Wrong password or username.'); location.href='../index.php';</script>";
 	}
 	$pdo = null;
 }

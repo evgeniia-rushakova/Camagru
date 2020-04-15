@@ -19,6 +19,7 @@ function check_user_is_parent_of_comment()
 	$user = $_SESSION['user'];
 	$pdo = connect_to_database();
 	$comment_text = $_GET['text'];
+	$comment_date = strtotime('Y-m-d-H-i-s',$_GET['date']);
 	$comment_date = $_GET['date'];
 	$smtp = $pdo->prepare("SELECT * FROM Users WHERE user = ?");
 	$smtp->execute(array($user));

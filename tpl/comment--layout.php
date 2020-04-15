@@ -1,6 +1,6 @@
 <div class="photo__description-container--comment comment">
     <div class="comment__container">
-        <img src="../img/avatars/{user_avatar}" alt="avatar" class="comment__author-avatar" width="48" height="48">
+        <img src="../img/avatars/{user_avatar}" alt="avatar" class="comment__author-avatar" width="48" height="auto" style="align-self: center;">
         <div class="comment__info-author">
             <p class="comment__author"> <a href="">{comment-author}</a></p>
             <p class="comment__date">{comment-date}</p>

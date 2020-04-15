@@ -6,3 +6,5 @@
 			$email_sql_author = $pdo->prepare("SELECT * FROM Users2 WHERE user = ?");
         	$email_sql_author->execute(array($user));
         	$user_id = $email_sql_author->fetch()['id'];
+
+        			echo "<script>alert('Password changed!'); location.href='../index.php';</script>";

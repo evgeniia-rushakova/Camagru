@@ -62,7 +62,7 @@ function render_inner_content_popup($content)
 		$dislikes = $info['dislikes'];
 		$description = $info['description'];
 		$img_src = "../img/gallery_photos/$filename";
-		$width = "auto";
+		$width = "500px";
 		$height = "auto";
 
 		$smtp = $pdo->prepare("SELECT * FROM photos WHERE photo = ?");

@@ -16,7 +16,7 @@
 		<div class="photo__container--text">
 			<div class="photo__description-container--author">
 				<div class="photo__description-container">
-					<img src="../img/avatars/{avatar_author_src}" alt="avatar_author" class="photo__author-avatar" width="48" height="48">
+					<img src="../img/avatars/{avatar_author_src}" alt="avatar_author" class="photo__author-avatar" width="48" height="auto" style="align-self: center;">
 					<div class="photo__info-author">
 						<p class="photo__author"> <a href="">{photo-author_name}</a></p>
 						<p class="photo__date">{photo-date}</p>
@@ -27,7 +27,7 @@
 			{comments}
 		</div>
 		<div class="photo__comment-form">
-			<img src="../img/avatars/{current_user_avatar_src}" alt="avatar" class="photo__author-avatar" width="48" height="48">
+			<img src="../img/avatars/{current_user_avatar_src}" alt="avatar" class="comment__author-avatar" width="48" height="auto" style="align-self: center;">
 			<form action="../php/add_new_comment.php" class="photo__comment-form--form">
 				<input type="hidden" name="main-photo" value="{img_alt}">
 				<input type="hidden" name="author_photo" value="{photo_author}">

@@ -635,6 +635,7 @@ main {
   flex-direction: row;
   padding-left: 12px;
 }
+
 .photo__author-avatar,
 .comment__author-avatar {
   margin-right: 16px;
@@ -700,6 +701,7 @@ main {
   position: relative;
   padding-bottom: 82px;
 }
+
 .photo__comment-form::after {
   content: "";
   position: absolute;

@@ -11,7 +11,10 @@ if(!isset($_SESSION['user'])|| $_SESSION['user']==false)
 
 $pdo= connect_to_database();
 $info = get_user_info($pdo);
-$gallery = get_photos_content($info['photos'], $pdo);
+if(!$info['photos'])
+	$gallery = '<p class="gallery-container--inner-title" style="font-size: 14px;"> No photos yet. </p>';
+else
+	$gallery = get_photos_content($info['photos'], $pdo);
 $title = "Jslave Camagru";
 $header = file_get_contents("tpl/inner_header--layout.php");
 $content = file_get_contents("tpl/camagru_main--layout.php");
@@ -21,7 +24,7 @@ $file = str_replace('{header}', $header, $file);
 $file = str_replace('{content}', $content, $file);
 $file = str_replace('{gallery}', $gallery, $file);
 $templates=$photo . $answer;
-$scripts = "";
+$scripts = '<script src="js/camagru.js"></script>';
 $file = str_replace('{templates}',$templates, $file);
 $file = str_replace('{scripts}',$scripts, $file);
 $pdo = null;
