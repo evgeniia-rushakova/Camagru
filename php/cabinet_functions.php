@@ -9,6 +9,34 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] == false) {
 	exit;
 }
 
+function get_filters($pdo)
+{
+	$filters_array = scandir("img/filters");
+
+	$filters= '<p class="gallery-container--inner-title" style="font-size: 14px;"> No filters available. </p>';
+
+	if($filters_array)
+	{
+		$filters = "";
+		unset($filters_array[0]);
+		unset($filters_array[1]);
+		$template = file_get_contents("tpl/filter--layout.php");
+		$num = 1;
+		foreach ($filters_array as $item)
+		{
+			$template_cpy = $template;
+			$name = $item;
+			$src = "img/filters/" . $item;
+			$template_cpy = str_replace('{filter_name}', $name, $template_cpy);
+			$template_cpy = str_replace('{filter_src}', $src, $template_cpy);
+			$template_cpy = str_replace('{num}',$num, $template_cpy);
+			$filters .= $template_cpy;
+			$num++;
+		}
+	}
+	return ($filters);
+}
+
 function get_photos_from_user($id, $pdo)
 {
 	$smtp = $pdo->prepare("SELECT * FROM photos WHERE author_id = ?");

@@ -104,7 +104,7 @@ $photo = '
              <div class="popup__photo-wrapper">
                  <button class="popup__close"></button>
                  <div class="popup__photo-result">
-                     <img src="{img_src}" alt="">
+                     <img src="{img_src}" alt="" class="popup__photo--src">
                  </div>
                  <form class="popup__form" action="#">
                      <input type="hidden" name="main-photo" value=happy-pepe-feelsgoodman.jpg>

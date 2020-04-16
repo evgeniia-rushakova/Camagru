@@ -7,12 +7,12 @@
             <input class="cabinet__avatar__upload" type="file" required id="file" name="userfile">
             <button class="cabinet__avatar-button" type="submit">Load</button>
         </form>
-        <form action="" style="padding-top: 40px;">
+        <form class="main-camagru__form" action="../php/camera.php" style="padding-top: 40px;">
             <div class="main-camagru__upload file_upload-container">
                 <div class="main-camagru__preview">
                     <video id="videoTag" src="" autoplay muted class="view--video__video"></video>
                     <div class="main-camagru__loaded-img">
-                        <img src="{uploaded_img}" alt="uploaded_img" style="width: auto;">
+                        <img src="{uploaded_img}" alt="uploaded_img" style="max-width: 80%;">
                     </div>
                     <div class="main-camagru__buttons buttons">
                         <input class="buttons__camera-radio" type="radio" name="file_type" value="camera" id="radio_camera" required checked>
@@ -25,19 +25,7 @@
                 <div class="main-camagru-filters-container filters">
                     <h3 class="gallery-container--inner-title filters__title">Effects:</h3>
                     <div class="filters__list">
-                        <!--{filters}-->
-                        <input type="checkbox" class="filter__radio" id="radio1" name="radio">
-                        <label for="radio1" class="filters__item"><img class="filters__img" src="img/filters/filter%20(1).png" alt="filter"></label>
-                        <input type="checkbox" class="filter__radio" id="radio2" name="radio">
-                        <label for="radio2" class="filters__item"><img class="filters__img" src="img/filters/filter%20(7).png" alt="filter"></label>
-                        <input type="checkbox" class="filter__radio" id="radio3" name="radio">
-                        <label for="radio3" class="filters__item"><img class="filters__img" src="img/filters/filter%20(8).png" alt="filter"></label>
-                        <input type="checkbox" class="filter__radio" id="radio4" name="radio">
-                        <label for="radio4" class="filters__item"><img class="filters__img" src="img/filters/filter%20(9).png" alt="filter"></label>
-                        <input type="checkbox" class="filter__radio" id="radio5" name="radio">
-                        <label for="radio5" class="filters__item"><img class="filters__img" src="img/filters/filter%20(10).png" alt="filter"></label>
-                        <input type="checkbox" class="filter__radio" id="radio6" name="radio">
-                        <label for="radio6" class="filters__item"><img class="filters__img" src="img/filters/filter%20(11).png" alt="filter"></label>
+                        {filters}
                     </div>
                 </div>
             </div>

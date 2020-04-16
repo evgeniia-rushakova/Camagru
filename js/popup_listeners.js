@@ -9,12 +9,7 @@
         const popup = document.querySelector(wrapper);
         const button_close = popup.querySelector(".popup__close");
 
-        const remove_popup = function() {
-            //  evt.preventDefault();
-            button_close.removeEventListener("click", func);
-            main.removeChild(popup);
-        };
-        button_close.addEventListener("click", remove_popup);
+
     };
 
     const forgot_click_handler = function() {

@@ -52,14 +52,14 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\web\www\host1.localhost\img" />
     </key>
   </component>
-  <component name="RunManager" selected="PHP Script.index.php">
+  <component name="RunManager" selected="PHP Web Page.Unnamed">
     <configuration name="popup_listeners.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/js/popup_listeners.js" working-dir="$PROJECT_DIR$/js">
       <method v="2" />
     </configuration>
@@ -75,6 +75,14 @@
       <method v="2" />
     </configuration>
     <configuration name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/index.php">
+      <CommandLine>
+        <PhpTestInterpreterSettings>
+          <option name="interpreterName" value="PHP" />
+        </PhpTestInterpreterSettings>
+      </CommandLine>
+      <method v="2" />
+    </configuration>
+    <configuration name="Unnamed" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" nameIsGenerated="true" server_name="localhost">
       <method v="2" />
     </configuration>
     <list>
@@ -82,6 +90,7 @@
       <item itemvalue="PHP Script.add_new_comment.php" />
       <item itemvalue="PHP Script.index.php" />
       <item itemvalue="PHP Script.file_upload_validity.php" />
+      <item itemvalue="PHP Web Page.Unnamed" />
     </list>
     <recent_temporary>
       <list>
@@ -118,6 +127,11 @@
       <workItem from="1586878760299" duration="213000" />
       <workItem from="1586879010755" duration="13390000" />
       <workItem from="1586940980574" duration="29037000" />
+      <workItem from="1587029433732" duration="3430000" />
+      <workItem from="1587034336078" duration="13737000" />
+      <workItem from="1587049434140" duration="6805000" />
+      <workItem from="1587056374176" duration="914000" />
+      <workItem from="1587057372174" duration="4041000" />
     </task>
     <servers />
   </component>
@@ -125,10 +139,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="497" y="178" key="#CLI_Interpreters" timestamp="1586878832866">
+    <state x="497" y="178" key="#CLI_Interpreters" timestamp="1587056456002">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="497" y="178" key="#CLI_Interpreters/0.0.1920.1040@0.0.1920.1040" timestamp="1586878832866" />
+    <state x="497" y="178" key="#CLI_Interpreters/0.0.1920.1040@0.0.1920.1040" timestamp="1587056456002" />
     <state x="303" y="178" key="#Notifications" timestamp="1586699933721">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -137,10 +151,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="624" y="114" key="#PHP/0.0.1920.1040@0.0.1920.1040" timestamp="1585927415622" />
-    <state x="411" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585934880919">
+    <state x="411" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587057544926">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="411" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585934880919" />
+    <state x="411" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587057544926" />
     <state x="646" y="282" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper" timestamp="1586787128945">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -149,10 +163,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="684" y="328" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586875278363" />
-    <state x="836" y="325" width="570" height="442" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#" timestamp="1585934393515">
+    <state x="836" y="325" width="570" height="442" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#" timestamp="1587056442375">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="836" y="325" width="570" height="442" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#/0.0.1920.1040@0.0.1920.1040" timestamp="1585934393515" />
+    <state x="836" y="325" width="570" height="442" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#/0.0.1920.1040@0.0.1920.1040" timestamp="1587056442375" />
     <state x="636" y="212" key="#file_upload.php" timestamp="1585927416922">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -161,54 +175,54 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="901" y="257" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586881442491" />
-    <state width="1877" height="254" key="GridCell.Tab.0.bottom" timestamp="1586972344666">
+    <state width="1877" height="262" key="GridCell.Tab.0.bottom" timestamp="1587060280409">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="254" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586972344666" />
-    <state width="1877" height="254" key="GridCell.Tab.0.center" timestamp="1586972344666">
+    <state width="1877" height="262" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587060280409" />
+    <state width="1877" height="262" key="GridCell.Tab.0.center" timestamp="1587060280409">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="254" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586972344666" />
-    <state width="1877" height="254" key="GridCell.Tab.0.left" timestamp="1586972344666">
+    <state width="1877" height="262" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587060280409" />
+    <state width="1877" height="262" key="GridCell.Tab.0.left" timestamp="1587060280409">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="254" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586972344666" />
-    <state width="1877" height="254" key="GridCell.Tab.0.right" timestamp="1586972344666">
+    <state width="1877" height="262" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587060280409" />
+    <state width="1877" height="262" key="GridCell.Tab.0.right" timestamp="1587060280409">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="254" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586972344666" />
-    <state width="1877" height="254" key="GridCell.Tab.1.bottom" timestamp="1586972344666">
+    <state width="1877" height="262" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587060280409" />
+    <state width="1877" height="262" key="GridCell.Tab.1.bottom" timestamp="1587060280410">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="254" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586972344666" />
-    <state width="1877" height="254" key="GridCell.Tab.1.center" timestamp="1586972344666">
+    <state width="1877" height="262" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587060280410" />
+    <state width="1877" height="262" key="GridCell.Tab.1.center" timestamp="1587060280410">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="254" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586972344666" />
-    <state width="1877" height="254" key="GridCell.Tab.1.left" timestamp="1586972344666">
+    <state width="1877" height="262" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587060280410" />
+    <state width="1877" height="262" key="GridCell.Tab.1.left" timestamp="1587060280409">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="254" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586972344666" />
-    <state width="1877" height="254" key="GridCell.Tab.1.right" timestamp="1586972344666">
+    <state width="1877" height="262" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587060280409" />
+    <state width="1877" height="262" key="GridCell.Tab.1.right" timestamp="1587060280410">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="254" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586972344666" />
-    <state width="1877" height="254" key="GridCell.Tab.2.bottom" timestamp="1586972344666">
+    <state width="1877" height="262" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587060280410" />
+    <state width="1877" height="262" key="GridCell.Tab.2.bottom" timestamp="1587060280410">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="254" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586972344666" />
-    <state width="1877" height="254" key="GridCell.Tab.2.center" timestamp="1586972344666">
+    <state width="1877" height="262" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587060280410" />
+    <state width="1877" height="262" key="GridCell.Tab.2.center" timestamp="1587060280410">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="254" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586972344666" />
-    <state width="1877" height="254" key="GridCell.Tab.2.left" timestamp="1586972344666">
+    <state width="1877" height="262" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587060280410" />
+    <state width="1877" height="262" key="GridCell.Tab.2.left" timestamp="1587060280410">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="254" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586972344666" />
-    <state width="1877" height="254" key="GridCell.Tab.2.right" timestamp="1586972344666">
+    <state width="1877" height="262" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587060280410" />
+    <state width="1877" height="262" key="GridCell.Tab.2.right" timestamp="1587060280410">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="254" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586972344666" />
+    <state width="1877" height="262" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587060280410" />
     <state width="1607" height="405" key="GridCell.Tab.3.bottom" timestamp="1586787005765">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -233,10 +247,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="802" y="440" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586966495689" />
-    <state x="417" y="145" key="SettingsEditor" timestamp="1586878877980">
+    <state x="417" y="145" key="SettingsEditor" timestamp="1587056457065">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="417" y="145" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586878877980" />
+    <state x="417" y="145" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1587056457065" />
     <state x="632" y="70" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1585926949468">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -245,10 +259,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="621" y="189" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1586880547251" />
-    <state x="683" y="238" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1586957133777">
+    <state x="683" y="238" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1587060191784">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="683" y="238" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040@0.0.1920.1040" timestamp="1586957133777" />
+    <state x="683" y="238" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040@0.0.1920.1040" timestamp="1587060191784" />
     <state x="1147" y="75" width="607" height="804" key="find.popup" timestamp="1586959982974">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -270,33 +284,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="php">
-          <url>file://$PROJECT_DIR$/php/change_pass.php</url>
-          <line>27</line>
-          <option name="timeStamp" value="105" />
-        </line-breakpoint>
-        <line-breakpoint type="php">
           <url>file://$PROJECT_DIR$/inner_reg.php</url>
           <line>1</line>
           <option name="timeStamp" value="106" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
+        <line-breakpoint type="php">
           <url>file://$PROJECT_DIR$/php/avatar_upload.php</url>
           <line>5</line>
           <option name="timeStamp" value="116" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/php/photo_to_gallery_upload.php</url>
-          <line>23</line>
-          <option name="timeStamp" value="118" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/php/file_upload_validity.php</url>
-          <line>44</line>
-          <properties>
-            <option name="className" value="" />
-            <option name="methodName" value="\check_uploaded_file" />
-          </properties>
-          <option name="timeStamp" value="115" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
