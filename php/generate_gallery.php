@@ -3,16 +3,19 @@ include_once "config/connect.php";
 session_start();
 function get_gallery_photos()
 {
-	$photos_array = scandir("img/gallery_photos");
-	unset($photos_array[0]);
-	unset($photos_array[1]);
+	$pdo =  connect_to_database();
+	$smtp = $pdo->prepare("SELECT photo FROM photos");
+	$smtp->execute();
+	$photos_array_2 = $smtp->fetchAll();
+	$photos_array_2 = array_reverse($photos_array_2);
 	$result = "";
 	$width = "150px";
 	$height = "auto";
 	$template_origin = file_get_contents("tpl/photo_in_gallery--layout.php");
-	$pdo =  connect_to_database();
-	foreach ($photos_array as $item)
+
+	foreach ($photos_array_2 as $value)
 	{
+		$item = $value['photo'];
 		$sql = $pdo->prepare("SELECT description FROM photos WHERE photo = ?") ;
 		$sql->execute([$item]);
 		$img_alt = $sql->fetchColumn();

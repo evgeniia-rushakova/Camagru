@@ -8,15 +8,18 @@ if(!isset($_SESSION['user'])|| $_SESSION['user']==false)
 	exit;
 }
 
-
-
 $pdo= connect_to_database();
 $info = get_user_info($pdo);
 
 if(!$info['photos'])
 	$gallery = '<p class="gallery-container--inner-title" style="font-size: 14px;"> No photos yet. </p>';
 else
+{
+	if (count($info['photos']) > 5)
+		$info['photos'] =array_slice($info['photos'],0, 4);
 	$gallery = get_photos_content($info['photos'], $pdo);
+}
+
 $title = "Jslave Camagru";
 $filters = get_filters($pdo);
 $header = file_get_contents("tpl/inner_header--layout.php");

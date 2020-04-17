@@ -8,8 +8,6 @@
         main.appendChild(template);
         const popup = document.querySelector(wrapper);
         const button_close = popup.querySelector(".popup__close");
-
-
     };
 
     const forgot_click_handler = function() {

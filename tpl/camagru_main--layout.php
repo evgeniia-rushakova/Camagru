@@ -7,10 +7,12 @@
             <input class="cabinet__avatar__upload" type="file" required id="file" name="userfile">
             <button class="cabinet__avatar-button" type="submit">Load</button>
         </form>
-        <form class="main-camagru__form" action="../php/camera.php" style="padding-top: 40px;">
+        <form class="main-camagru__form" action="../php/camera.php" style="padding-top: 40px;" method="post">
             <div class="main-camagru__upload file_upload-container">
                 <div class="main-camagru__preview">
-                    <video id="videoTag" src="" autoplay muted class="view--video__video"></video>
+                    <video id="videoTag"  autoplay muted class="view--video__video"></video>
+                    <canvas class="canvas" style="display:none;"></canvas>
+                    <input type="hidden" class="canvas--photo" name="photo">
                     <div class="main-camagru__loaded-img">
                         <img src="{uploaded_img}" alt="uploaded_img" style="max-width: 80%;">
                     </div>
@@ -21,6 +23,7 @@
                         <label class="buttons__upload-label" for="radio_upload"></label>
                     </div>
                 </div>
+
                 <button type="submit" class="main-camagru__submit">CamaGru</button>
                 <div class="main-camagru-filters-container filters">
                     <h3 class="gallery-container--inner-title filters__title">Effects:</h3>

@@ -7,7 +7,7 @@
     var uploadForm = document.querySelector(".main-camagru__upload-file");
     var videoWindow = document.querySelector(".view--video__video");
     var uploadedImgWindow = document.querySelector(".main-camagru__loaded-img");
-    var mainCamagruForm=document.querySelector(".main-camagru__form");
+
 
     var checkCheckboxChanging = function()
     {
@@ -38,7 +38,8 @@
     cameraButton.addEventListener("change",checkCheckboxChanging);
     uploadButton.addEventListener("change",checkCheckboxChanging);
     var info = window.location.href;
-    if (info.indexOf("success") && info.indexOf("result="))
+    var first = info.indexOf("success");
+    if (info.indexOf("success")!= -1 && info.indexOf("result=") != -1)
     {
         const main = document.querySelector('main');
         const template= document.getElementById("photo_result").content;
@@ -51,15 +52,13 @@
         imSrcPlace.maxHeight = "30%";
         main.appendChild(popup);
         const button_close = document.querySelector(".popup__close");
-        const remove_popup = function() {
-            //  evt.preventDefault();
-            button_close.removeEventListener("click", remove_popup);
-            var addedPopup = document.querySelector(".popup__wrapper-photo")
-            main.removeChild(addedPopup);
-        };
-        button_close.addEventListener("click", remove_popup);
+        button_close.addEventListener("click", function () {
+            var win = document.querySelector(".popup__wrapper-photo");
+            main.removeChild(win);
+        });
+
     }
-    /*
+
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||  navigator.mozGetUserMedia;
     if (navigator.getUserMedia) {
         navigator.getUserMedia({ audio: true, video: { width: 400, height: 400 } },
@@ -77,6 +76,32 @@
     } else {
         console.log("getUserMedia not supported");
     }
-    */
 
+
+    if (cameraButton.checked == true)
+    {
+        var mainCamagruForm=document.querySelector(".main-camagru__form");
+        var mainCamagruButton = document.querySelector(".main-camagru__submit")
+        var hiddenInput = document.querySelector(".canvas--photo");
+        var take_photo = function (evt)
+        {
+            var video = document.querySelector(".view--video__video");
+            var canvas = document.querySelector(".canvas");
+            var width = 640;
+            var height = 480;
+            canvas.setAttribute('width', width);
+            canvas.setAttribute('height', height);
+            canvas.getContext("2d").drawImage(video, 0, 0, width,height);
+            var data= canvas.toDataURL("image/png");
+            hiddenInput.value = data;
+
+
+        };
+
+        mainCamagruButton.addEventListener("click", function (evt) {
+                take_photo();
+          //  evt.preventDefault();
+        });
+
+    }
 })();

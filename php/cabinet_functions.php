@@ -42,7 +42,7 @@ function get_photos_from_user($id, $pdo)
 	$smtp = $pdo->prepare("SELECT * FROM photos WHERE author_id = ?");
 	$smtp->execute(array($id));
 	$result = $smtp->fetchAll();
-
+	$result = array_reverse($result);
 	return ($result);
 }
 
@@ -51,6 +51,7 @@ function get_comments_from_user($id, $pdo)
 	$smtp = $pdo->prepare("SELECT * FROM comments WHERE comment_author = ?");
 	$smtp->execute(array($id));
 	$result = $smtp->fetchAll();
+	$result = array_reverse($result);
 	return ($result);
 }
 
