@@ -8,3 +8,8 @@
         	$user_id = $email_sql_author->fetch()['id'];
 
         			echo "<script>alert('Password changed!'); location.href='../index.php';</script>";
+if (!isset($_SESSION['user'])|| $_SESSION['user']==false)
+{
+	header("Location: index.php");
+	exit;
+}

@@ -30,6 +30,35 @@
                     <div class="filters__list">
                         {filters}
                     </div>
+                    <div class="filter__settings">
+                        <div class="filter__radio-wrapper">
+                            <p class="filter__settings--title">vertical position</p>
+                            <input type="radio" class="filter__setting--radio" name="position_vert" id="position1">
+                            <label class="filter__setting--label"  for="position1">top</label>
+                            <input type="radio" class="filter__setting--radio" name="position_vert" id="position2" checked>
+                            <label class="filter__setting--label"  for="position2">middle</label>
+                            <input type="radio" class="filter__setting--radio" name="position_vert" id="position3">
+                            <label class="filter__setting--label"  for="position3">bottom</label>
+                        </div>
+                        <div class="filter__radio-wrapper">
+                            <p class="filter__settings--title">horizontal position</p>
+                            <input type="radio" class="filter__setting--radio" name="scale" id="position4">
+                            <label class="filter__setting--label"  for="position4">left</label>
+                            <input type="radio" class="filter__setting--radio" name="scale" id="position5" checked>
+                            <label class="filter__setting--label"  for="position5">center</label>
+                            <input type="radio" class="filter__setting--radio" name="scale" id="position6">
+                            <label class="filter__setting--label"  for="position6">right</label>
+                        </div>
+                        <div class="filter__radio-wrapper">
+                            <p class="filter__settings--title">filter scale</p>
+                            <input type="radio" class="filter__setting--radio" name="position_hor" id="position7" checked>
+                            <label class="filter__setting--label"  for="position7">100%</label>
+                            <input type="radio" class="filter__setting--radio" name="position_hor" id="position8">
+                            <label class="filter__setting--label"  for="position8">75%</label>
+                            <input type="radio" class="filter__setting--radio" name="position_hor" id="position9">
+                            <label class="filter__setting--label"  for="position9">50%</label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
@@ -38,4 +67,5 @@
         <h3 class="gallery-container--inner-title">Your latest photos:</h3>
        {gallery}
     </aside>
+
 </div>

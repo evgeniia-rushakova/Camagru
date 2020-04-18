@@ -4,7 +4,7 @@
 		<div class="navigation__container">
 			<nav class="main-header__navigation">
 				<ul class="main-navigation__menu">
-					<li class="main-navigation__link"><a href="../gallery.php">Gallery</a></li>
+					<li class="main-navigation__link"><a href="../gallery.php?page=1">Gallery</a></li>
 				</ul>
 			</nav>
 			<nav class="user-navigation">
