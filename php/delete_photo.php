@@ -18,7 +18,7 @@ function delete_photo_from_base_and_folder($photo_id, $photo)
 			unlink("../img/gallery_photos/".$file);
 	}
 	$pdo = null;
-	header("Location: ".$_SERVER["HTTP_REFERER"]);
+	echo "<script>alert('Photo deleted');location.href=\"../gallery.php?page=1\";</script>";
 }
 
 function check_user_is_parent_of_photo()
@@ -42,5 +42,5 @@ function check_user_is_parent_of_photo()
 		delete_photo_from_base_and_folder($photo_id, $photo);
 	}
 	else
-		header("Location: ".$_SERVER["HTTP_REFERER"]);
+		echo "<script>alert('You can\'t delete other users\'s photo!');location.href=document.referrer;</script>";
 }

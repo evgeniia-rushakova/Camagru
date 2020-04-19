@@ -32,6 +32,7 @@ body {
 main {
   margin: 0;
   padding: 0 10px;
+    min-height: 90vh;
 }
 .visually-hidden {
   position: absolute;
@@ -467,6 +468,11 @@ main {
   width: 150px;
   align-items: center;
 }
+.gallery--item__img--main
+{
+    width: 250px;
+}
+
 .gallery--item a {
   height: auto;
   margin: 0 auto;
@@ -478,8 +484,13 @@ main {
   width: auto;
   max-width: 150px;
   height: auto;
-  max-height: 150px;
+  max-height: 250px;
   border-radius: 20px;
+}
+.gallery--item__img--main
+{
+    max-width: 250px;
+    max-height: 250px;
 }
 
 @media (max-width: 768px) {
@@ -1083,6 +1094,7 @@ main {
   justify-content: space-between;
   flex-direction: row;
   padding: 0 30px;
+  align-items: start;
 }
 .gallery-container--inner {
   flex-direction: row;
@@ -1139,12 +1151,22 @@ main {
   width: inherit;
   height: inherit;
 }
+
+.main-camagru__loaded-img
+{
+  display: flex;
+  align-self: center;
+}
+
 .main-camagru__loaded-img img {
-  max-width: 80%;
+  max-width: 640px;
   width: auto;
   height: auto;
-  max-height: 80%;
-  padding: 10% 10%;
+  max-height: 480px;
+  margin: 0;
+  padding: 0;
+  align-self: center;
+
 }
 .main-camagru__upload-file {
   max-width: 300px;

@@ -5,6 +5,7 @@ function clean_data($value = "")
 	$value = stripslashes($value);
 	$value = strip_tags($value);
 	$value = htmlspecialchars($value);
+	$value = addslashes($value);
 	return ($value);
 }
 

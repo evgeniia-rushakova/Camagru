@@ -8,6 +8,10 @@
         main.appendChild(template);
         const popup = document.querySelector(wrapper);
         const button_close = popup.querySelector(".popup__close");
+        button_close.addEventListener("click", function (evt) {
+            evt.preventDefault();
+                main.removeChild(popup);
+        });
     };
 
     const forgot_click_handler = function() {
@@ -27,10 +31,6 @@
         const value = document.getElementById('change_password').content;
         add_popup(value, ".popup__wrapper-password", change_password_click_handler);
     };
-    /*    const camagru_submit_click_handler = function () {
-            const value = document.getElementById('photo_result').content;
-            add_popup(value, ".popup__wrapper-photo", camagru_submit_click_handler);
-        };*/
 
     function add_listener_to_popup(what_search, handlerFunc) {
         const link = document.querySelector(what_search);
@@ -55,7 +55,6 @@
             class: ".profile__change--password",
             func: change_password_click_handler
         },
-        // {class:".main-camagru__submit", func: camagru_submit_click_handler}
     ];
 
     for (let item of array_links) {

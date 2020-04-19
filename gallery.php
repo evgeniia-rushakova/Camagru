@@ -14,4 +14,7 @@ $file = str_replace('{header}', $header, $file);
 $file = str_replace('{content}', $content, $file);
 $file = str_replace('{gallery-photos}', $gallery, $file);
 $file = str_replace('{pagination}', $pagination, $file);
+$file = str_replace('{templates}', "", $file);
+$file = str_replace('{scripts}', "", $file);
+
 print($file);

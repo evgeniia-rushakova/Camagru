@@ -14,7 +14,7 @@
                     <canvas class="canvas" style="display:none;"></canvas>
                     <input type="hidden" class="canvas--photo" name="photo">
                     <div class="main-camagru__loaded-img">
-                        <img src="{uploaded_img}" alt="uploaded_img" style="max-width: 80%;">
+                        <img src="{uploaded_img}" alt="here will be your uploaded image">
                     </div>
                     <div class="main-camagru__buttons buttons">
                         <input class="buttons__camera-radio" type="radio" name="file_type" value="camera" id="radio_camera" required checked>
@@ -33,30 +33,30 @@
                     <div class="filter__settings">
                         <div class="filter__radio-wrapper">
                             <p class="filter__settings--title">vertical position</p>
-                            <input type="radio" class="filter__setting--radio" name="position_vert" id="position1">
-                            <label class="filter__setting--label"  for="position1">top</label>
-                            <input type="radio" class="filter__setting--radio" name="position_vert" id="position2" checked>
+                            <input type="radio" class="filter__setting--radio" name="position_vert" id="position1" value="top">
+                            <label class="filter__setting--label"  for="position1" >top</label>
+                            <input type="radio" class="filter__setting--radio" name="position_vert" id="position2" checked value="middle">
                             <label class="filter__setting--label"  for="position2">middle</label>
-                            <input type="radio" class="filter__setting--radio" name="position_vert" id="position3">
+                            <input type="radio" class="filter__setting--radio" name="position_vert" id="position3" value="bottom">
                             <label class="filter__setting--label"  for="position3">bottom</label>
                         </div>
                         <div class="filter__radio-wrapper">
                             <p class="filter__settings--title">horizontal position</p>
-                            <input type="radio" class="filter__setting--radio" name="scale" id="position4">
+                            <input type="radio" class="filter__setting--radio" name="position_hor" id="position4" value="left">
                             <label class="filter__setting--label"  for="position4">left</label>
-                            <input type="radio" class="filter__setting--radio" name="scale" id="position5" checked>
+                            <input type="radio" class="filter__setting--radio" name="position_hor" id="position5" checked value="center">
                             <label class="filter__setting--label"  for="position5">center</label>
-                            <input type="radio" class="filter__setting--radio" name="scale" id="position6">
+                            <input type="radio" class="filter__setting--radio" name="position_hor" id="position6" value="right">
                             <label class="filter__setting--label"  for="position6">right</label>
                         </div>
                         <div class="filter__radio-wrapper">
                             <p class="filter__settings--title">filter scale</p>
-                            <input type="radio" class="filter__setting--radio" name="position_hor" id="position7" checked>
+                            <input type="radio" class="filter__setting--radio" name="scale" id="position7" checked value="100">
                             <label class="filter__setting--label"  for="position7">100%</label>
-                            <input type="radio" class="filter__setting--radio" name="position_hor" id="position8">
-                            <label class="filter__setting--label"  for="position8">75%</label>
-                            <input type="radio" class="filter__setting--radio" name="position_hor" id="position9">
-                            <label class="filter__setting--label"  for="position9">50%</label>
+                            <input type="radio" class="filter__setting--radio" name="scale" id="position8" value="60">
+                            <label class="filter__setting--label"  for="position8">60%</label>
+                            <input type="radio" class="filter__setting--radio" name="scale" id="position9" value="30">
+                            <label class="filter__setting--label"  for="position9">30%</label>
                         </div>
                     </div>
                 </div>

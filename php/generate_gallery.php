@@ -54,7 +54,7 @@ function get_gallery_photos($current_page)
 {
 	$pdo =  connect_to_database();
 	$result = "";
-	$width = "150px";
+	$width = "250px";
 	$height = "auto";
 	$template_origin = file_get_contents("tpl/photo_in_gallery--layout.php");
 
@@ -74,6 +74,8 @@ function get_gallery_photos($current_page)
 		$template = str_replace('{img_width}', $width, $template);
 		$template = str_replace('{img_height}', $height, $template);
 		$template = str_replace('{description}', $img_alt, $template);
+		$template = str_replace('{add_class}', "gallery--item__img--main", $template);
+		$template = str_replace('{add_width_class}', "gallery--item__img--main", $template);
 		$result .= $template;
 	}
 	$pdo = null;

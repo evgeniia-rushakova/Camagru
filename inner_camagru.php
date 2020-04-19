@@ -32,7 +32,7 @@ $file = str_replace('{gallery}', $gallery, $file);
 
 $file = str_replace('{filters}', $filters, $file);
 
-$templates=$photo . $answer;
+$templates=$photo;
 if (isset($_SESSION['file']))
 	$file = str_replace('{uploaded_img}',"../img/temp_img/". $_SESSION['file'],$file);
 $scripts = '<script src="js/camagru.js"></script>';

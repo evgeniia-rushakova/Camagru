@@ -63,7 +63,7 @@ if ($result_arr = check_validity())
 		add_user_into_table($pdo, $result_arr);
 	}
 	else
-		echo "<script>alert('Error!This username is busy.Try another.'); location.href='../index.php';</script>";
+		echo "<script>alert('Error!This username or e-mail is busy.Try another.'); location.href='../index.php';</script>";
 	$pdo = null;
 }
 else

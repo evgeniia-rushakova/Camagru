@@ -72,6 +72,8 @@ function get_photos_content($photos, $pdo)
 		$template = str_replace('{img_alt}', "$img_alt", $template);
 		$template = str_replace('{img_width}', $width, $template);
 		$template = str_replace('{img_height}', $height, $template);
+		$template = str_replace('{add_class}', "", $template);
+		$template = str_replace('{add_width_class}', "", $template);
 		$template = str_replace('{description}', "$img_alt", $template);
 
 		$result .= $template;

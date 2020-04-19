@@ -11,15 +11,13 @@ function delete_comment_from_base($comment_id)
 	$email_sql_author = $pdo->prepare("DELETE FROM comments WHERE id = ?");
 	$email_sql_author->execute(array($comment_id));
 	$pdo=null;
-	header("Location: ".$_SERVER["HTTP_REFERER"]);
-}
+	echo "<script>alert('Comment deleted');location.href=location.href=document.referrer;;</script>";}
 
 function check_user_is_parent_of_comment()
 {
 	$user = $_SESSION['user'];
 	$pdo = connect_to_database();
 	$comment_text = $_GET['text'];
-	$comment_date = strtotime('Y-m-d-H-i-s',$_GET['date']);
 	$comment_date = $_GET['date'];
 	$smtp = $pdo->prepare("SELECT * FROM Users WHERE user = ?");
 	$smtp->execute(array($user));
@@ -37,6 +35,6 @@ function check_user_is_parent_of_comment()
 		delete_comment_from_base($comment_id);
 	}
 	else
-		header("Location: ".$_SERVER["HTTP_REFERER"]);
+		echo "<script>alert('You can\'t delete other users\'s comment!');location.href=document.referrer;</script>";
 }
 
