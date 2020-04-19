@@ -1096,6 +1096,11 @@ main {
   padding: 0 30px;
   align-items: start;
 }
+.main-camagru-wrapper
+{
+  max-width: 100%;
+  margin-right: 10px;
+}
 .gallery-container--inner {
   flex-direction: row;
   max-width: 200px;
@@ -1157,7 +1162,6 @@ main {
   display: flex;
   align-self: center;
 }
-
 .main-camagru__loaded-img img {
   max-width: 640px;
   width: auto;
@@ -1166,8 +1170,19 @@ main {
   margin: 0;
   padding: 0;
   align-self: center;
-
 }
+@media (max-width: 768px) {
+  .main-camagru__loaded-img
+  {
+    max-width: 100%;
+  }
+  .main-camagru__loaded-img img
+  {
+    max-width: 100%;
+    border-radius: 20px;
+  }
+}
+
 .main-camagru__upload-file {
   max-width: 300px;
   align-self: flex-end;

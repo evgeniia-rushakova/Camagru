@@ -6,7 +6,7 @@ $change_username = '
     <div class="popup__wrapper-username">
         <div class="overlay"></div>
         <div class="popup popup__change-username">
-            <form class="popup__form" action="../php/settings.php">
+            <form class="popup__form" action="../php/settings.php" method="post">
                 <button class="popup__close"></button>
                 <input type="hidden" name="act" value="change_username">
                 <label class="sign-in-form__label" for="password">Your password: </label>
@@ -27,7 +27,7 @@ $forgot_password = '
         <div class="popup_wrapper--forgot">
             <div class="overlay"></div>
             <div class="popup popup__change-password">
-                <form class="popup__form" action="../php/settings.php">
+                <form class="popup__form" action="../php/settings.php" method="post">
                     <button class="popup__close"></button>
                     <input class="sign-in-form__field" type="hidden" name="act" value="forgot_password">
                     <label class="sign-in-form__label" for="email">Your e-mail: </label>
@@ -46,7 +46,7 @@ $change_password = '
         <div class="popup__wrapper-password">
         <div class="overlay"></div>
         <div class="popup popup__change-password">
-            <form class="popup__form" action="../php/settings.php">
+            <form class="popup__form" action="../php/settings.php" method="post">
                 <button class="popup__close"></button>
                 <input class="sign-in-form__field" type="hidden" name="act" value="change_password">
                 <label class="sign-in-form__label" for="oldpassword">Your old password: </label>
@@ -67,7 +67,7 @@ $change_email = '
         <div class="popup__wrapper-email">
             <div class="overlay"></div>
             <div class="popup popup__change-email">
-                <form class="popup__form" action="../php/settings.php">
+                <form class="popup__form" action="../php/settings.php" method="post">
                     <button class="popup__close"></button>
                     <input type="hidden" name="act" value="change_email">
                     <label class="sign-in-form__label" for="password">Your password: </label>
@@ -102,7 +102,7 @@ $photo = '
         <div class="overlay"></div>
         <div class="popup__photo">
             <div class="popup__photo-wrapper">
-                <button class="popup__close"></button>
+                <a href="../php/delete_temp_photos.php" class="popup__close" ></a>
                 <div class="popup__photo-result">
                   <img src="{img_src}" alt="" class="popup__photo--src">
                 </div>

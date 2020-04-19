@@ -3,39 +3,8 @@
 (function () {
 
     var cameraButton = document.querySelector(".buttons__camera-radio");
-    var uploadButton = document.querySelector(".buttons__upload-radio");
-    var uploadForm = document.querySelector(".main-camagru__upload-file");
-    var videoWindow = document.querySelector(".view--video__video");
-    var uploadedImgWindow = document.querySelector(".main-camagru__loaded-img");
-
-
-    var checkCheckboxChanging = function () {
-        if (uploadButton.checked == true) {
-            console.log("upload checked");
-            if (uploadForm.classList.contains("visually-hidden"))
-                uploadForm.classList.remove("visually-hidden");
-            if (uploadedImgWindow.classList.contains("visually-hidden"))
-                uploadedImgWindow.classList.remove("visually-hidden");
-            videoWindow.classList.add("visually-hidden");
-        }
-        if (cameraButton.checked == true) {
-            console.log("camera checked");
-            uploadForm.classList.add("visually-hidden");
-            if (videoWindow.classList.contains("visually-hidden"))
-                videoWindow.classList.remove("visually-hidden");
-            uploadedImgWindow.classList.add("visually-hidden");
-        }
-    };
-    if (cameraButton.checked == true) {
-        uploadedImgWindow.classList.add("visually-hidden");
-        uploadForm.classList.add("visually-hidden");
-    }
-
-
-    cameraButton.addEventListener("change", checkCheckboxChanging);
-    uploadButton.addEventListener("change", checkCheckboxChanging);
     var info = window.location.href;
-    var first = info.indexOf("success");
+
     if (info.indexOf("success") != -1 && info.indexOf("result=") != -1) {
         const main = document.querySelector('main');
         const template = document.getElementById("photo_result").content;
@@ -51,8 +20,8 @@
         button_close.addEventListener("click", function () {
             var win = document.querySelector(".popup__wrapper-photo");
             main.removeChild(win);
+            document.location.href = "../inner_camagru.php";
         });
-
     }
 
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
@@ -79,10 +48,10 @@
         console.log("getUserMedia not supported");
     }
 
-
     if (cameraButton.checked == true) {
         var mainCamagruButton = document.querySelector(".main-camagru__submit")
         var hiddenInput = document.querySelector(".canvas--photo");
+
         var take_photo = function (evt) {
             var video = document.querySelector(".view--video__video");
             var canvas = document.querySelector(".canvas");
@@ -98,6 +67,5 @@
         mainCamagruButton.addEventListener("click", function (evt) {
             take_photo();
         });
-
     }
 })();

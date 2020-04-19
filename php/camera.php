@@ -84,15 +84,48 @@ function get_image_data()
 		$info['photo'] =  "../img/temp_img/" . $_SESSION['user'] . "_raw_photo.png";
 		file_put_contents($info['photo'], $data);
 		$info['photo_id'] = imagecreatefrompng($info['photo']);
-		$info['photo_name'] = "../img/temp_img/" . "result_" . $_SESSION['user'] . ".png";
+		$info['photo_name'] = "../img/temp_img/" . $_SESSION['user'] ."result_" .  ".png";
 	}
 	else if(strcmp($_POST['file_type'],"upload") == 0)
 	{
 		if (!isset($_SESSION['file']))
 			return (null);
+
 		$info['photo'] = "../img/temp_img/" . $_SESSION['file'];
-		$info['photo_id'] = imagecreatefromjpeg($info['photo']);
-		$info['photo_name'] = "../img/temp_img/" . "result_" . $_SESSION['file'] ;
+		$filetypestring = explode(".", $info['photo']);
+		$type = $filetypestring[count($filetypestring) -1];
+		$info['format'] = $type;
+		switch ($type)
+		{
+			case "jpg":
+			{
+				$info['photo_id'] = imagecreatefromjpeg($info['photo']);
+				break;
+			}
+			case "png":
+			{
+				$info['photo_id'] = imagecreatefrompng($info['photo']);
+				break;
+			}
+			case "bmp":
+			{
+				$info['photo_id'] = imagecreatefrombmp($info['photo']);
+				break;
+			}
+			case "gif":
+			{
+				$info['photo_id'] = imagecreatefromgif($info['photo']);
+				break;
+			}
+			case "webp":
+			{
+				$info['photo_id'] = imagecreatefromwebp($info['photo']);
+				break;
+			}
+			default:
+				return (null);
+		}
+		$info['photo_name'] = "../img/temp_img/" . $_SESSION['user'] . "_result" . $type ;
 	}
 	return ($info);
 }
@@ -106,7 +139,6 @@ function mix_photo()
 		echo "<script>alert('Oops! Something going wrong! Try again, please!'); location.href='../inner_camagru.php';</script>";
 		exit;
 	}
-
 	$filters = $info['filters'];
 	$photo = $info['photo'];
 	$new_photo_name = $info['photo_name'];
@@ -124,7 +156,34 @@ function mix_photo()
 			imagecopy($photo_id, $data['filt_id'], $data['pos_x'], $data['pos_y'], 0, 0,
 				$data['filt_w'], $data['filt_h']);
 			imagedestroy($filter_id);
-			imagejpeg ($photo_id, $new_photo_name, 75);
+			switch ($info['format'])
+			{
+				case "jpg":
+				{
+					imagejpeg ($photo_id, $new_photo_name);
+					break;
+				}
+				case "png":
+				{
+					imagepng($photo_id, $new_photo_name);
+					break;
+				}
+				case "bmp":
+				{
+					imagebmp($photo_id, $new_photo_name);
+					break;
+				}
+				case "gif":
+				{
+					imagegif($photo_id, $new_photo_name);
+					break;
+				}
+				case "webp":
+				{
+					imagewebp($photo_id, $new_photo_name);
+					break;
+				}
+			}
 		}
 	imagedestroy($photo_id);
 	header("Location: ". "../inner_camagru.php?". "copy=success&result=" . $new_photo_name);

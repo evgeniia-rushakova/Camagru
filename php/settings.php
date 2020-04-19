@@ -5,8 +5,8 @@ session_start();
 
 function change_password_outside_cabinet($pdo)
 {
-	$user = $_GET['user'];
-	$pass = $_GET['password'];
+	$user = $_POST['user'];
+	$pass = $_POST['password'];
 	$arr = check_validity();
 	if ($arr == NULL)
 		echo "<script>alert('Error! Bad data.'); location.href='../cabinet.php';</script>";
@@ -46,9 +46,9 @@ function send_mail_about_changing_settings($to, $subject, $message)
 
 function change_username($pdo, $info)
 {
-	if (check_validity() != null && password_verify($_GET['password'], $info['password']) == 1)
+	if (check_validity() != null && password_verify($_POST['password'], $info['password']) == 1)
 	{
-		$newusername = clean_data($_GET['newusername']);
+		$newusername = clean_data($_POST['newusername']);
 		$smtp = $pdo->prepare("SELECT COUNT(*) FROM users WHERE user = ?");
 		$smtp->execute(array($newusername));
 		$is_new_username_unique = $smtp->fetchColumn();
@@ -71,10 +71,10 @@ function change_username($pdo, $info)
 
 function change_email($pdo, $info)
 {
-	if (check_validity() != null && password_verify($_GET['password'], $info['password']) == 1)
+	if (check_validity() != null && password_verify($_POST['password'], $info['password']) == 1)
 	{
-		$newemail = clean_data($_GET['email']);
-		$smtp = $pdo->prepare("SELECT COUNT(*) FROM users WHERE user = ?");
+		$newemail = clean_data($_POST['email']);
+		$smtp = $pdo->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
 		$smtp->execute(array($newemail));
 		$is_new_email_unique = $smtp->fetchColumn();
 		if ($is_new_email_unique == 0)
@@ -97,11 +97,11 @@ function change_email($pdo, $info)
 
 function change_password_inside_cabinet($pdo, $info)
 {
-	if (check_validity() != null && password_verify($_GET['password'], $info['password']) == 1)
+	if (check_validity() != null && password_verify($_POST['password'], $info['password']) == 1)
 	{
 		$user = $info['user'];
 		$email = $info['email'];
-		$newpassword = password_hash($_GET['newpassword'], PASSWORD_BCRYPT);
+		$newpassword = password_hash($_POST['newpassword'], PASSWORD_BCRYPT);
 		$smtp = $pdo->prepare("UPDATE users SET password = ? where id = ?");
 		$smtp->execute(array($newpassword, $info['id']));
 		$message = "Hello, $user! Your password is changed successfully! Enjoy Camagru!";
@@ -119,7 +119,7 @@ function change_notifications($pdo, $info)
 		$val = 0;
 	$smtp = $pdo->prepare("UPDATE users SET notifications = ? where id = ?");
 	$smtp->execute(array($val, $info['id']));
-	header("Location: ".$_SERVER["HTTP_REFERER"]);
+	header("Location: ". "../cabinet.php");
 }
 
 function zero_password_and_create_new_token($pdo,$email)
@@ -142,7 +142,7 @@ function forgot_password($pdo)
 	$user = $smtp->fetchColumn();
 	if ($user == 1)
 	{
-		$newtoken = zero_password_and_create_new_token($email);
+		$newtoken = zero_password_and_create_new_token($pdo, $email);
 		$to = $email;
 		$subject = 'change_pass';
 		$link = "http://localhost/php/change_pass.php?email=$to&token=$newtoken";
@@ -153,18 +153,19 @@ function forgot_password($pdo)
 		);
 		mail($to, $subject, $message, $headers);
 		echo "<script>alert('Please, check your e-mail!'); location.href='../index.php';</script>";
+		exit;
 	}
 	echo  "<script>location.href='../index.php';alert('Error!There is no users with such e-mail. Try again'); </script>";
 
 }
 
 $pdo = connect_to_database();
-if (strcmp($_GET['act'], "forgot_password") == 0)
+if (isset($_GET['act']) && strcmp($_GET['act'], "forgot_password") == 0)
 {
 	forgot_password($pdo);
 	$pdo = null;
 }
-else if (strcmp($_GET['act'], "change_password_outside") == 0)
+else if (isset($_POST['act']) && strcmp($_POST['act'], "change_password_outside") == 0)
 {
 	change_password_outside_cabinet($pdo);
 	$pdo = null;
@@ -173,13 +174,13 @@ else {
 	$user = $_SESSION['user'];
 	$info = get_user_info_arr($pdo, $user);
 	if ($info != false && $user != false) {
-		if (strcmp($_GET['act'], "change_username") == 0)
+		if (isset($_POST['act']) && strcmp($_POST['act'], "change_username") == 0)
 			change_username($pdo, $info);
-		else if (strcmp($_GET['act'], "change_email") == 0)
+		else if (isset($_POST['act']) && strcmp($_POST['act'], "change_email") == 0)
 			change_email($pdo, $info);
-		else if (strcmp($_GET['act'], "change_password") == 0)
+		else if (isset($_POST['act']) && strcmp($_POST['act'], "change_password") == 0)
 			change_password_inside_cabinet($pdo, $info);
-		else if (strcmp($_GET['act'], "notifications") == 0)
+		else if (isset($_GET['act']) && strcmp($_GET['act'], "notifications") == 0)
 			change_notifications($pdo, $info);
 		$pdo = null;
 	}

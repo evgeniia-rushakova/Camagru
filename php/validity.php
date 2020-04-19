@@ -20,7 +20,7 @@ function check_validity()
 {
 	$arr = array();
 	$i = 0;
-	foreach ($_GET as $value)
+	foreach ($_POST as $value)
 	{
 		$value2 = clean_data($value);
 		if (check_validity_reg_data($value2) != true)
@@ -28,7 +28,7 @@ function check_validity()
 		array_push($arr, $value2);
 		$i++;
 	}
-	if (count($arr) != count($_GET))
+	if (count($arr) != count($_POST))
 		return (NULL);
 	return ($arr);
 }

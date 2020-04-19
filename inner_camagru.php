@@ -35,7 +35,7 @@ $file = str_replace('{filters}', $filters, $file);
 $templates=$photo;
 if (isset($_SESSION['file']))
 	$file = str_replace('{uploaded_img}',"../img/temp_img/". $_SESSION['file'],$file);
-$scripts = '<script src="js/camagru.js"></script>';
+$scripts ='<script src="js/upload_camera_buttons.js"></script>'. '<script src="js/camagru.js"></script>';
 $file = str_replace('{templates}',$templates, $file);
 $file = str_replace('{scripts}',$scripts, $file);
 $pdo = null;

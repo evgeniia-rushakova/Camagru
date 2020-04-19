@@ -28,7 +28,7 @@
 		</div>
 		<div class="photo__comment-form">
 			<img src="../img/avatars/{current_user_avatar_src}" alt="avatar" class="comment__author-avatar" width="48" height="auto" style="align-self: center;">
-			<form action="../php/add_new_comment.php" class="photo__comment-form--form">
+			<form action="../php/add_new_comment.php" class="photo__comment-form--form" method="post">
 				<input type="hidden" name="main-photo" value="{img_alt}">
 				<input type="hidden" name="author_photo" value="{photo_author}">
 				<label for="comment">

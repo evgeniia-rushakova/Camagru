@@ -9,7 +9,7 @@
     </div>
     <div class="index__sign-in-in-form-container">
         <p class="index__header">Creating great images for social networks. Be the most fashionable using CamaGru!</p>
-        <form action="../php/login.php" class="sign-in-form">
+        <form action="../php/login.php" class="sign-in-form" method="post">
             <label class="sign-in-form__label" for="sign-in-form__email">Your login</label>
             <input class="sign-in-form__field" id="sign-in-form__email" type="text" name="user">
             <label class="sign-in-form__label" for="sign-in-form__password">Your password</label>

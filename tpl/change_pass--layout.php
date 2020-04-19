@@ -9,7 +9,7 @@
 	</div>
 	<div class="sign-in-form-container">
 		<p class="index__header">Hello, {user}! Please, create new password to Camagru account.</p>
-		<form action="../php/settings.php" class="sign-in-form">
+		<form action="../php/settings.php" class="sign-in-form" method="post">
 			<input type="hidden" name="user" value={user}>
 			<input type="hidden" name="act" value="change_password_outside">
 			<p class="sign-in-form__label">Your new pass: <input type="password" name="password" class="sign-in-form__field" required="" minlength="6" maxlength="29"></p>

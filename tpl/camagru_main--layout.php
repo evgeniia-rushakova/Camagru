@@ -14,7 +14,7 @@
                     <canvas class="canvas" style="display:none;"></canvas>
                     <input type="hidden" class="canvas--photo" name="photo">
                     <div class="main-camagru__loaded-img">
-                        <img src="{uploaded_img}" alt="here will be your uploaded image">
+                        <img id="img" src="{uploaded_img}" alt="here will be your uploaded image">
                     </div>
                     <div class="main-camagru__buttons buttons">
                         <input class="buttons__camera-radio" type="radio" name="file_type" value="camera" id="radio_camera" required checked>

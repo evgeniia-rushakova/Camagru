@@ -9,7 +9,7 @@
     </div>
     <div class="sign-in-form-container">
         <p class="index__header">Create you account on CamaGru</p>
-        <form action="../php/registration_form.php" class="sign-in-form">
+        <form action="../php/registration_form.php" class="sign-in-form" method="post">
             <p class="sign-in-form__label">Your name <input type="text" name="username" class="sign-in-form__field" required="" minlength="3" maxlength="29"></p>
             <p class="sign-in-form__label">Your email <input type="email" name="useremail" class="sign-in-form__field" required="" minlength="4"></p>
             <p class="sign-in-form__label">Your pass: <input type="password" name="userpass" class="sign-in-form__field" required="" minlength="6" maxlength="29"></p>
