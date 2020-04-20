@@ -12,24 +12,25 @@
             evt.preventDefault();
                 main.removeChild(popup);
         });
+        waiterForPopupsHandler();
     };
 
-    const forgot_click_handler = function() {
+    const forgotClickHandler = function() {
         const value = document.getElementById('forgot_password').content;
-        add_popup(value, ".popup_wrapper--forgot", forgot_click_handler);
+        add_popup(value, ".popup_wrapper--forgot", forgotClickHandler);
     };
 
-    const change_username_click_handler = function() {
+    const changeUsernameClickHandler = function() {
         const value = document.getElementById('change_username').content;
-        add_popup(value, ".popup__wrapper-username", change_username_click_handler);
+        add_popup(value, ".popup__wrapper-username", changeUsernameClickHandler);
     };
-    const change_email_click_handler = function() {
+    const changeEmailClickHandler = function() {
         const value = document.getElementById('change_email').content;
-        add_popup(value, ".popup__wrapper-email", change_email_click_handler);
+        add_popup(value, ".popup__wrapper-email", changeEmailClickHandler);
     };
-    const change_password_click_handler = function() {
+    const changePasswordClickHandler = function() {
         const value = document.getElementById('change_password').content;
-        add_popup(value, ".popup__wrapper-password", change_password_click_handler);
+        add_popup(value, ".popup__wrapper-password", changePasswordClickHandler);
     };
 
     function add_listener_to_popup(what_search, handlerFunc) {
@@ -41,19 +42,19 @@
     let array_links = [];
     array_links = [{
         class: ".sign-in-form__forgot",
-        func: forgot_click_handler
+        func: forgotClickHandler
     },
         {
             class: ".profile__change--username",
-            func: change_username_click_handler
+            func: changeUsernameClickHandler
         },
         {
             class: ".profile__change--email",
-            func: change_email_click_handler
+            func: changeEmailClickHandler
         },
         {
             class: ".profile__change--password",
-            func: change_password_click_handler
+            func: changePasswordClickHandler
         },
     ];
 

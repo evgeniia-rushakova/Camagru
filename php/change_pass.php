@@ -4,22 +4,25 @@ include_once "validity.php";
 
 function check_token_and_email()
 {
-	$email = $_GET['email'];
-	$token = $_GET['token'];
-	$pdo = connect_to_database();;
-	$check = $pdo->prepare("SELECT COUNT(*) FROM Users where email = ? AND token = ?");
-	$check->execute(array(
-		$email,
-		$token
-	));
-	$check_result = $check->fetchColumn();
-	if ($check_result == 1)
+	if(isset($_GET))
 	{
-		$smtp = $pdo->prepare("UPDATE users SET token = ? where email = ?");
-		$rand_token =bin2hex(random_bytes(20));
-		$smtp->execute(array($rand_token, $email));
-		$pdo = null;
-		return ($email);
+		$email = $_GET['email'];
+		$token = $_GET['token'];
+		$pdo = connect_to_database();;
+		$check = $pdo->prepare("SELECT COUNT(*) FROM Users where email = ? AND token = ?");
+		$check->execute(array(
+			$email,
+			$token
+		));
+		$check_result = $check->fetchColumn();
+		if ($check_result == 1)
+		{
+			$smtp = $pdo->prepare("UPDATE users SET token = ? where email = ?");
+			$rand_token =bin2hex(random_bytes(20));
+			$smtp->execute(array($rand_token, $email));
+			$pdo = null;
+			return ($email);
+		}
 	}
 	return (NULL);
 }

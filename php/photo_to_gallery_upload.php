@@ -11,7 +11,5 @@ if(check_uploaded_file() == true)
 	$res = move_uploaded_file($_FILES['userfile']['tmp_name'], "$dest_dir/$name");
 	header("Location: ". "../inner_camagru.php");
 }
-else
-	header("Location: ". "../inner_camagru.php");
 
 

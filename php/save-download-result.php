@@ -57,7 +57,7 @@ if (isset($_GET))
 	$file = $referer[count($referer) - 1];
 	$filetype_arr = explode(".", $file);
 	$filetype ="." . $filetype_arr[count($filetype_arr) - 1];
-	$new_file = $_SESSION['user'] . date("Ymdhis") . $filetype;
+	$new_file = $_SESSION['user'] . date("Ymdhis") . "." .$filetype;
 	copy($file, $new_file);
 	if (strcmp($_GET['act'], "gallery") == 0)
 		save_photo_to_gallery($new_file);

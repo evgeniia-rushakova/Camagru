@@ -1,6 +1,7 @@
 <?php
 include_once "tpl/popups--layout.php";
-session_start();
+if (!isset($_SESSION))
+	session_start();
 if (isset($_SESSION['user']))
 {
 	header("Location: "."inner_camagru.php");
@@ -16,7 +17,7 @@ $file = str_replace('{header}', $header, $file);
 $file = str_replace('{content}', $content, $file);
 
 $templates=$forgot_password . $answer;
-$scripts = '<script src="js/popup_listeners.js"></script>';
+$scripts = '<script src="js/check_repeated_form_inputs.js"></script>' . '<script src="js/popup_listeners.js"></script>';
 $file = str_replace('{templates}',$templates, $file);
 $file = str_replace('{scripts}',$scripts, $file);
 

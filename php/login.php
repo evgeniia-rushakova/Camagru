@@ -10,7 +10,8 @@ function open_session($user)
 	$find_user->execute([$user]);
 	$user = $find_user->fetchColumn();
 	$pdo = null;
-	session_start();
+	if(!isset($_SESSION))
+		session_start();
 	$_SESSION['user'] = $user;
 	header("Location: "."../inner_camagru.php");
 }

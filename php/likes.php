@@ -1,6 +1,7 @@
 <?php
 include_once "../config/connect.php";
-session_start();
+if(!isset($_SESSION))
+	session_start();
 $pdo = connect_to_database();
 
 function get_like($photo_info, $likes_table, $user_id)
@@ -67,20 +68,20 @@ function get_likes_from_table($photo_id, $user_id)
 }
 
 
+if(isset($_SESSION['user']) && isset($_GET['photo']))
+{
+	$sql = $pdo->prepare("SELECT * FROM photos WHERE photo = ?") ;
+	$sql->execute(array($_GET['photo']));
+	$photo_info = $sql->fetch();
+	$smtp = $pdo->prepare("SELECT * FROM Users WHERE user = ?");
+	$smtp->execute(array($_SESSION['user']));
+	$user_id = $smtp->fetch()['id'];
+	$likes_table = get_likes_from_table($photo_info['id'], $user_id);
+}
 
-$sql = $pdo->prepare("SELECT * FROM photos WHERE photo = ?") ;
-$sql->execute(array($_GET['photo']));
-$photo_info = $sql->fetch();
-$smtp = $pdo->prepare("SELECT * FROM Users WHERE user = ?");
-$smtp->execute(array($_SESSION['user']));
-$user_id = $smtp->fetch()['id'];
-
-
-$likes_table = get_likes_from_table($photo_info['id'], $user_id);
-
-if ($_GET['value'] == 1)
+if (isset($_GET['value']) && $_GET['value'] == 1)
 	get_like($photo_info, get_likes_from_table($photo_info['id'], $user_id),$user_id);
-else if($_GET['value'] == -1)
+else if(isset($_GET['value']) && $_GET['value'] == -1)
 	get_dislike($photo_info, get_likes_from_table($photo_info['id'], $user_id), $user_id);
-//header("Location: ".$_SERVER["HTTP_REFERER"]);
+
 header('Location: http://localhost/photo_page.php?' . $_GET['photo']);

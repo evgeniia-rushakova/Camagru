@@ -2,7 +2,8 @@
 
 include_once("file_upload_validity.php");
 include_once "../config/connect.php";
-
+if(!isset($_SESSION))
+	session_start();
 if (check_uploaded_file() == true)
 {
 	$file = explode(".", $_FILES['userfile']['name']);

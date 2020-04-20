@@ -2,6 +2,8 @@
 include_once "tpl/popups--layout.php";
 include_once "config/connect.php";
 $title = "registration";
+if(!isset($_SESSION))
+	session_start();
 if (isset($_GET) && isset($_GET['act']) && strcmp($_GET['act'], "change_password") == 0)
 {
 	$title = "Change password";
@@ -23,7 +25,7 @@ $file = str_replace('{title}', $title, $file);
 $file = str_replace('{header}', $header, $file);
 $file = str_replace('{content}', $content, $file);
 $templates=$answer;
-$scripts = "";
+$scripts = '<script src="js/check_repeated_form_inputs.js"></script>' . '<script type="text/javascript"> waiterForPopupsHandler();</script>';
 $file = str_replace('{templates}',$templates, $file);
 $file = str_replace('{scripts}',$scripts, $file);
 print($file);

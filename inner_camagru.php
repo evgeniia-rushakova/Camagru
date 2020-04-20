@@ -2,6 +2,8 @@
 include_once "php/cabinet_functions.php";
 include_once "tpl/popups--layout.php";
 include_once "config/connect.php";
+if(!isset($_SESSION))
+	session_start();
 if(!isset($_SESSION['user'])|| $_SESSION['user']==false)
 {
 	header("Location: index.php");

@@ -1,6 +1,7 @@
 <?php
 include_once "../config/connect.php";
-session_start();
+if(!isset($_SESSION))
+	session_start();
 
 mix_photo();
 
@@ -78,19 +79,23 @@ function get_image_data()
 	if (strcmp($_POST['file_type'], "camera") == 0)
 	{
 		$img = $_POST['photo'];
+		if(!$img)
+			return(null);
 		$img = str_replace('data:image/png;base64,', '', $img);
 		$img = str_replace(' ', '+', $img);
 		$data = base64_decode($img);
+		if(!$data)
+			return(null);
 		$info['photo'] =  "../img/temp_img/" . $_SESSION['user'] . "_raw_photo.png";
 		file_put_contents($info['photo'], $data);
 		$info['photo_id'] = imagecreatefrompng($info['photo']);
-		$info['photo_name'] = "../img/temp_img/" . $_SESSION['user'] ."result_" .  ".png";
+		$info['photo_name'] = "../img/temp_img/" . $_SESSION['user'] . "_result" . "." . "png" ;
+		$info['format'] = "png";
 	}
 	else if(strcmp($_POST['file_type'],"upload") == 0)
 	{
 		if (!isset($_SESSION['file']))
 			return (null);
-
 		$info['photo'] = "../img/temp_img/" . $_SESSION['file'];
 		$filetypestring = explode(".", $info['photo']);
 		$type = $filetypestring[count($filetypestring) -1];
@@ -125,7 +130,7 @@ function get_image_data()
 			default:
 				return (null);
 		}
-		$info['photo_name'] = "../img/temp_img/" . $_SESSION['user'] . "_result" . $type ;
+		$info['photo_name'] = "../img/temp_img/" . $_SESSION['user'] . "_result" . "." . $type ;
 	}
 	return ($info);
 }
@@ -139,52 +144,56 @@ function mix_photo()
 		echo "<script>alert('Oops! Something going wrong! Try again, please!'); location.href='../inner_camagru.php';</script>";
 		exit;
 	}
-	$filters = $info['filters'];
-	$photo = $info['photo'];
-	$new_photo_name = $info['photo_name'];
-	$photo_id = $info['photo_id'];
-	if(!$filters)
-		copy($photo, $new_photo_name);
 	else
-		foreach ($filters as $filter)
-		{
-			$filter_id = imagecreatefrompng("../img/filters/" . $filter);
-			imageAlphaBlending($filter_id, false);
-			imageSaveAlpha($filter_id, true);
-
-			$data = get_settings_for_filter($photo_id, $filter_id);
-			imagecopy($photo_id, $data['filt_id'], $data['pos_x'], $data['pos_y'], 0, 0,
-				$data['filt_w'], $data['filt_h']);
-			imagedestroy($filter_id);
-			switch ($info['format'])
+	{
+		$filters = $info['filters'];
+		$photo = $info['photo'];
+		$new_photo_name = $info['photo_name'];
+		$photo_id = $info['photo_id'];
+		if(!$filters)
+			copy($photo, $new_photo_name);
+		else
+			foreach ($filters as $filter)
 			{
-				case "jpg":
+				$filter_id = imagecreatefrompng("../img/filters/" . $filter);
+				imageAlphaBlending($filter_id, false);
+				imageSaveAlpha($filter_id, true);
+
+				$data = get_settings_for_filter($photo_id, $filter_id);
+				imagecopy($photo_id, $data['filt_id'], $data['pos_x'], $data['pos_y'], 0, 0,
+					$data['filt_w'], $data['filt_h']);
+				imagedestroy($filter_id);
+				switch ($info['format'])
 				{
-					imagejpeg ($photo_id, $new_photo_name);
-					break;
-				}
-				case "png":
-				{
-					imagepng($photo_id, $new_photo_name);
-					break;
-				}
-				case "bmp":
-				{
-					imagebmp($photo_id, $new_photo_name);
-					break;
-				}
-				case "gif":
-				{
-					imagegif($photo_id, $new_photo_name);
-					break;
-				}
-				case "webp":
-				{
-					imagewebp($photo_id, $new_photo_name);
-					break;
+					case "jpg":
+					{
+						imagejpeg ($photo_id, $new_photo_name);
+						break;
+					}
+					case "png":
+					{
+						imagepng($photo_id, $new_photo_name);
+						break;
+					}
+					case "bmp":
+					{
+						imagebmp($photo_id, $new_photo_name);
+						break;
+					}
+					case "gif":
+					{
+						imagegif($photo_id, $new_photo_name);
+						break;
+					}
+					case "webp":
+					{
+						imagewebp($photo_id, $new_photo_name);
+						break;
+					}
 				}
 			}
-		}
-	imagedestroy($photo_id);
-	header("Location: ". "../inner_camagru.php?". "copy=success&result=" . $new_photo_name);
+		imagedestroy($photo_id);
+		header("Location: ". "../inner_camagru.php?". "copy=success&result=" . $new_photo_name);
+	}
+
 }

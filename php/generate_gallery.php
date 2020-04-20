@@ -1,6 +1,7 @@
 <?php
 include_once "config/connect.php";
-session_start();
+if(!isset($_SESSION))
+	session_start();
 
 function calculate_pages_info($current_page)
 {
@@ -11,7 +12,7 @@ function calculate_pages_info($current_page)
 	$photos_array = $smtp->fetchAll();
 	$photos_array = array_reverse($photos_array);
 	$count_photos = count($photos_array);
-	$photos_per_page = 10;
+	$photos_per_page = 12;
 
 	$pages = ceil($count_photos / $photos_per_page);
 	$info['pages'] = $pages;

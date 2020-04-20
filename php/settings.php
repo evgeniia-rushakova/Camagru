@@ -1,7 +1,8 @@
 <?php
 include_once "../config/connect.php";
 include_once "validity.php";
-session_start();
+if(!isset($_SESSION))
+	session_start();
 
 function change_password_outside_cabinet($pdo)
 {
@@ -136,7 +137,7 @@ function zero_password_and_create_new_token($pdo,$email)
 
 function forgot_password($pdo)
 {
-	$email = $_GET['email'];
+	$email = $_POST['email'];
 	$smtp = $pdo->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
 	$smtp->execute(array($email));
 	$user = $smtp->fetchColumn();
@@ -160,7 +161,7 @@ function forgot_password($pdo)
 }
 
 $pdo = connect_to_database();
-if (isset($_GET['act']) && strcmp($_GET['act'], "forgot_password") == 0)
+if (isset($_POST['act']) && strcmp($_POST['act'], "forgot_password") == 0)
 {
 	forgot_password($pdo);
 	$pdo = null;

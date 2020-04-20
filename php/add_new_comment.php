@@ -2,7 +2,8 @@
 include_once "../config/connect.php";
 include_once "validity.php";
 
-session_start();
+if(!isset($_SESSION))
+	session_start();
 add_new_comment();
 
 function send_mail_to_user_about_new_comment($author_email, $comment_author, $photo, $comment_text)

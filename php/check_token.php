@@ -1,8 +1,11 @@
 <?php
 include_once "../config/connect.php";
 
-$email = $_GET['user'];
-$token = $_GET['token'];
+if(isset($_GET))
+{
+	$email = $_GET['user'];
+	$token = $_GET['token'];
+}
 
 function check_token($email, $token)
 {

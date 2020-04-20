@@ -1,8 +1,7 @@
 <?php
-
-//include_once "config/connect.php";
 include_once "php/cabinet_functions.php";
-session_start();
+if(!isset($_SESSION))
+	session_start();
 
 if (!isset($_SESSION['user']) || $_SESSION['user'] == false) {
 	header("Location: index.php");

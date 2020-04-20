@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,13 +10,10 @@
     <title>Jslave Camagru</title>
 </head>
 <body>
-
-    {header}
-
+{header}
 <main>
-   {content}
+    {content}
 </main>
-
 <footer class="main-footer">
     <div class="footer__container">
         <ul class="footer-social">

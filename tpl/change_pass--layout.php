@@ -9,11 +9,11 @@
 	</div>
 	<div class="sign-in-form-container">
 		<p class="index__header">Hello, {user}! Please, create new password to Camagru account.</p>
-		<form action="../php/settings.php" class="sign-in-form" method="post">
+		<form action="../php/settings.php" class="sign-in-form" method="post" id="form_check">
 			<input type="hidden" name="user" value={user}>
 			<input type="hidden" name="act" value="change_password_outside">
-			<p class="sign-in-form__label">Your new pass: <input type="password" name="password" class="sign-in-form__field" required="" minlength="6" maxlength="29"></p>
-			<p class="sign-in-form__label">Please, repeat: <input type="password" name="password2" class="sign-in-form__field" required="" minlength="6" maxlength="29"></p>
+			<label class="sign-in-form__label">Your new pass: <input type="password" name="password" class="sign-in-form__field" required minlength="6" maxlength="29" id="field_1"></label>
+			<label class="sign-in-form__label">Please, repeat: <input type="password" name="password2" class="sign-in-form__field" required minlength="6" maxlength="29" id="field_2"></label>
 			<button class="sign-in-form__submit" type="submit">create</button>
 		</form>
 	</div>
