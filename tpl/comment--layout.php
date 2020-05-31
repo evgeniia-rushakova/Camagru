@@ -7,7 +7,10 @@
         </div>
     </div>
     <p class="comment__description">{comment-text}</p>
-    <form action="../php/delete_comment.php?date={comment-date}&text={comment-text}" method="post">
+    <form method="post" enctype="multipart/form-data" class="delete-comment">
+        <input type="hidden" name="act" value="delete">
+        <input type="hidden" name="comment-date" value="{comment-date}">
+        <input type="hidden" name="comment-text" value="{comment-text}">
         <button type="submit" class="comment__delete-comment"><img src="../img/cross.png" alt="delete comment" width="14" height="14" aria-label="delete comment"></button>
     </form>
 </div>

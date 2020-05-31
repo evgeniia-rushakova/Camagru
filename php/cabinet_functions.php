@@ -105,10 +105,10 @@ function get_comments_content($comments, $pdo)
 		$date = $item['date_of_comment'];
 		$text = $item['comment_text'];
 		$template = str_replace('{comment-date}', $date, $template);
-		//$template = str_replace('{author_avatar}', $author_avatar, $template)
 		$template = str_replace('{comment-text}', $text, $template);
 		$template = str_replace('{img_src}', $img_src, $template);
 		$template = str_replace('{img_alt}', "$img_alt", $template);
+		$template = str_replace('{img_href}', "$photo", $template);
 		$template = str_replace('{img_width}', $width, $template);
 		$template = str_replace('{img_height}', $height, $template);
 		$template = str_replace('{description}', "$img_alt", $template);

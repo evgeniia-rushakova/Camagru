@@ -56,7 +56,7 @@ if (isset($_GET))
 	$referer = explode("=", $_SERVER['HTTP_REFERER']);
 	$file = $referer[count($referer) - 1];
 	$filetype_arr = explode(".", $file);
-	$filetype ="." . $filetype_arr[count($filetype_arr) - 1];
+	$filetype = $filetype_arr[count($filetype_arr) - 1];
 	$new_file = $_SESSION['user'] . date("Ymdhis") . "." .$filetype;
 	copy($file, $new_file);
 	if (strcmp($_GET['act'], "gallery") == 0)

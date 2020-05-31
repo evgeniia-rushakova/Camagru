@@ -20,36 +20,6 @@ function pull_from_base($filename, $pdo)
 	return ($check_result);
 }
 
-function generate_comments($pdo, $photo)
-{
-	$result = $pdo->prepare("SELECT * FROM comments where photo_id = ?");
-	$result->execute([$photo]);
-	$fetch = $result->fetchAll();
-	$final= "";
-	foreach ($fetch as $item)
-	{
-		$template = file_get_contents("tpl/comment--layout.php");
-		$author_id = $item['comment_author'];
-
-		$smtp = $pdo->prepare("SELECT * FROM users WHERE id = ?");
-		$smtp->execute(array($author_id));
-		$author = $smtp->fetch()['user'];
-
-		$smtp = $pdo->prepare("SELECT name FROM avatars WHERE id = ?");
-		$smtp->execute(array($author_id));
-		$user_avatar = $smtp->fetch()['name'];
-
-		$date = $item['date_of_comment'];
-		$text = $item['comment_text'];
-		$template = str_replace('{comment-author}', $author, $template);
-		$template = str_replace('{comment-date}', $date, $template);
-		$template = str_replace('{comment-text}', $text, $template);
-		$template = str_replace('{user_avatar}', $user_avatar, $template);
-		$final.=$template;
-	}
-	return ($final);
-}
-
 function render_inner_content_popup($content)
 {
 	$pdo = connect_to_database();
@@ -61,8 +31,6 @@ function render_inner_content_popup($content)
 	{
 		$author_id = $info['author_id'];
 		$date = $info['date'];
-		$likes = $info['likes'];
-		$dislikes = $info['dislikes'];
 		$description = $info['description'];
 		$img_src = "../img/gallery_photos/$filename";
 		$width = "500px";
@@ -71,7 +39,6 @@ function render_inner_content_popup($content)
 		$smtp = $pdo->prepare("SELECT * FROM photos WHERE photo = ?");
 		$smtp->execute(array($filename));
 		$photo_id = $smtp->fetch()['id'];
-		$comments = generate_comments($pdo, $photo_id);
 		$template = $content;
 
 		$smtp = $pdo->prepare("SELECT * FROM users WHERE id = ?");
@@ -96,14 +63,11 @@ function render_inner_content_popup($content)
 		$template = str_replace('{img_alt}', "$filename", $template);
 		$template = str_replace('{img_width}', $width, $template);
 		$template = str_replace('{img_height}', $height, $template);
-		$template = str_replace('{likes}', "$likes", $template);
-		$template = str_replace('{dislikes}', "$dislikes", $template);
 		$template = str_replace('{photo-date}', "$date", $template);
-		$template = str_replace('{photo-author_name}', "$author_name", $template);//
+		$template = str_replace('{photo-author_name}', "$author_name", $template);
 		$template = str_replace('{description}', "$description", $template);
-		$template = str_replace('{avatar_author_src}', $author_avatar_src, $template);////////////
+		$template = str_replace('{avatar_author_src}', $author_avatar_src, $template);
 		$template = str_replace('{current_user_avatar_src}', $user_avatar_src, $template);
-		$template = str_replace('{comments}', "$comments", $template);
 		return ($template);
 	}
 	header("Location: "."../gallery.php");

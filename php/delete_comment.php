@@ -9,8 +9,8 @@ function delete_comment_from_base($comment_id)
 {
 	$pdo = connect_to_database();
 
-	$email_sql_author = $pdo->prepare("DELETE FROM comments WHERE id = ?");
-	$email_sql_author->execute(array($comment_id));
+	$del = $pdo->prepare("DELETE FROM comments WHERE id = ?");
+	$del->execute(array($comment_id));
 	$pdo=null;
 	echo "<script>alert('Comment deleted');location.href=location.href=document.referrer;;</script>";}
 
