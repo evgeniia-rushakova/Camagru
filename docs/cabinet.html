@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Jslave Camagru</title>
+</head>
+<body>
+<header class="main-header">
+    <div class="main-header__container">
+        <a class="main-header__logo" href="index.html"><img src="img/system_img/CamaGru.png" alt="logo" width="156" height="27"></a>
+        <div class="navigation__container">
+            <nav class="main-header__navigation">
+                <ul class="main-navigation__menu">
+                    <li class="main-navigation__link"><a href="gallery.html">Gallery</a></li>
+                    <li class="main-navigation__link"><a href="main-page.html">Make photo</a></li>
+                </ul>
+            </nav>
+            <nav class="user-navigation">
+                <ul class="user-navigation__menu">
+                    <li class="user-navigation__link"><a href="cabinet.html" class="sign-in-icon">Cabinet</a></li>
+                    <li class="user-navigation__link"><a href="index.html" class="sign-in-icon">log out</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+<main>
+
+    <div class="cabinet-container">
+        <div class="cabinet__avatar">
+            <h3 class="profile__title">Avatar</h3>
+            <div class="cabinet__avatar__upload--wrapper">
+                <img class="cabinet__avatar-photo" src="img/avatars/admin_avatar.jpg" alt="avatar of user">
+                <form  action="../php/avatar_upload.php" class="cabinet__avatar-form" method="post" enctype="multipart/form-data" >
+                    <input type="hidden" name="type_upload" value="avatar">
+                    <label for="file" class="cabinet__avatar__upload-label">Choose file...</label>
+                    <input class="cabinet__avatar__upload" type="file" required id="file" name="userfile"  accept=".jpg, .jpeg, .png .bmp .gif">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="300000">
+                    <button class="cabinet__avatar-button" type="submit">change</button>
+                </form>
+            </div>
+        </div>
+        <div class="cabinet__profile profile">
+            <h3 class="profile__title">Settings</h3>
+            <table class="profile__info">
+                <tr class="profile__table-row">
+                    <th class="profile__item">Username:</th>
+                    <th class="profile__value"> admin</th>
+                    <th class="profile__change profile__change--username">change</th>
+                </tr>
+                <tr class="profile__table-row">
+                    <th class="profile__item">E-mail:</th>
+                    <th class="profile__value"> admin@admin </th>
+                    <th class="profile__change profile__change--email">change</th>
+                </tr>
+                <tr class="profile__table-row">
+                    <th class="profile__item">Password:</th>
+                    <th class="profile__value">&#8226 &#8226 &#8226 &#8226 &#8226 &#8226 </th>
+                    <th class="profile__change profile__change--password">change</th>
+                </tr>
+                <tr class="profile__table-row">
+                    <th class="profile__item">E-mail notifications:</th>
+                    <th class="profile__value">yes</th>
+                    <th class="profile__change"><a href="../php/settings.php?act=notifications&val=yes" style="
+    color: #f06546;
+    text-decoration: none;
+">change</a></th>
+                </tr>
+            </table>
+            <div class="profile__photos">
+                <h3 class="profile__title">Yor photos:</h3>
+                <div class="profile__photos-container">
+                    <div class="gallery--item ">
+                        <a href="photo.html"><img class="gallery--item__img " src="img/gallery_photos/Rectangle_Copy_9.png" alt="from admin" width="150px" height="auto"></a>
+                    </div>
+                    <div class="gallery--item ">
+                        <a href="photo.html"><img class="gallery--item__img " src="img/gallery_photos/Rectangle_Copy_8.png" alt="from admin" width="150px" height="auto"></a>
+                    </div>
+                    <div class="gallery--item ">
+                        <a href="photo.html"><img class="gallery--item__img " src="img/gallery_photos/Rectangle_Copy_6.png" alt="from admin" width="150px" height="auto"></a>
+                    </div>
+                    <div class="gallery--item ">
+                        <a href="photo.html"><img class="gallery--item__img " src="img/gallery_photos/Rectangle_Copy_5.png" alt="from admin" width="150px" height="auto"></a>
+                    </div>
+                    <div class="gallery--item ">
+                        <a href="photo.html"><img class="gallery--item__img " src="img/gallery_photos/Rectangle_Copy_4.png" alt="from admin" width="150px" height="auto"></a>
+                    </div>
+                    <div class="gallery--item ">
+                        <a href="photo.html"><img class="gallery--item__img " src="img/gallery_photos/Rectangle_Copy_3.png" alt="from admin" width="150px" height="auto"></a>
+                    </div>
+                    <div class="gallery--item ">
+                        <a href="photo.html"><img class="gallery--item__img " src="img/gallery_photos/Rectangle_Copy_2.png" alt="from admin" width="150px" height="auto"></a>
+                    </div>
+                    <div class="gallery--item ">
+                        <a href="photo.html"><img class="gallery--item__img " src="img/gallery_photos/Rectangle_Copy_11.png" alt="from admin" width="150px" height="auto"></a>
+                    </div>
+                    <div class="gallery--item ">
+                        <a href="photo.html"><img class="gallery--item__img " src="img/gallery_photos/Rectangle_Copy_10.png" alt="from admin" width="150px" height="auto"></a>
+                    </div>
+                    <div class="gallery--item ">
+                        <a href="photo.html"><img class="gallery--item__img " src="img/gallery_photos/Rectangle_Copy.png" alt="from admin" width="150px" height="auto"></a>
+                    </div>
+                    <div class="gallery--item ">
+                        <a href="photo.html"><img class="gallery--item__img " src="img/gallery_photos/Rectangle.png" alt="from admin" width="150px" height="auto"></a>
+                    </div>
+                    <div class="gallery--item ">
+                        <a href="photo.html"><img class="gallery--item__img " src="img/gallery_photos/1232.jpg" alt="from admin" width="150px" height="auto"></a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="profile__comments">
+                <h3 class="profile__title"> Your comments:</h3>
+                <div class="comment__photo-min-container">
+                    <a class="comment__photo-miniature" href="../photo_page.php?1232.jpg"><img src="img/gallery_photos/1232.jpg" alt="miniature" width="100" height="auto"></a>
+                    <div class="photo__description-container--comment comment">
+                        <div class="comment__container">
+                            <img src="img/avatars/admin_avatar.jpg" alt="avatar" class="comment__author-avatar" width="48" height="auto" style="align-self: center;">
+                            <div class="comment__info-author">
+                                <p class="comment__author"> <a href="">You</a></p>
+                                <p class="comment__date">2020-09-09 09:14:10</p>
+                            </div>
+                        </div>
+                        <p class="comment__description">like it!</p>
+                        <form action="../php/delete_comment.php?date=2020-09-09 09:14:10&text=like it!" method="post">
+                            <button type="submit" class="comment__delete-comment comment__delete-comment--profile">delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="main-footer">
+    <div class="footer__container">
+        <ul class="footer-social">
+            <li class="footer-social__link social__git"><a href="#" aria-level="github account">github</a></li>
+            <li class="footer-social__link social__42"><a href="#" aria-label="intra42 account">intra 42</a></li>
+            <li class="footer-social__link social__insta"><a href="#" aria-level="instagram account">instagram</a></li>
+        </ul>
+        <div class="author">
+            <a href="#" class="author__name">Making by Jslave in 2020.</a>
+        </div>
+    </div>
+</footer>
+
+<template id="change_username">
+    <div class="popup__wrapper-username">
+        <div class="overlay"></div>
+        <div class="popup popup__change-username">
+            <form class="popup__form" action="../php/settings.php" method="post" id="form_check">
+                <button class="popup__close"></button>
+                <input type="hidden" name="act" value="change_username">
+                <label class="sign-in-form__label" for="password">Your password: </label>
+                <input class="sign-in-form__field" type="password" name="password" id="password">
+                <label class="sign-in-form__label" for="field_1">New username: </label>
+                <input class="sign-in-form__field" type="text" name="newusername" id="field_1">
+                <label class="sign-in-form__label" for="field_2">Please, repeat: </label>
+                <input class="sign-in-form__field" type="text" name="newusername2" id="field_2">
+                <button class="popup__submit sign-in-form__submit" type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</template>
+
+<template id="change_password">
+    <div class="popup__wrapper-password">
+        <div class="overlay"></div>
+        <div class="popup popup__change-password">
+            <form class="popup__form" action="../php/settings.php" method="post" id="form_check">
+                <button class="popup__close"></button>
+                <input class="sign-in-form__field" type="hidden" name="act" value="change_password">
+                <label class="sign-in-form__label" for="oldpassword">Your old password: </label>
+                <input class="sign-in-form__field" type="password" name="password">
+                <label class="sign-in-form__label" for="field_1">New password: </label>
+                <input class="sign-in-form__field" type="password" name="newpassword" id="field_1">
+                <label class="sign-in-form__label" for="field_2">Please, repeat: </label>
+                <input class="sign-in-form__field" type="password" name="newrpassword2" id="field_2">
+                <button class="popup__submit sign-in-form__submit" type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</template>
+
+<template id="change_email">
+    <div class="popup__wrapper-email">
+        <div class="overlay"></div>
+        <div class="popup popup__change-email">
+            <form class="popup__form" action="../php/settings.php" method="post" id="form_check">
+                <button class="popup__close"></button>
+                <input type="hidden" name="act" value="change_email">
+                <label class="sign-in-form__label" for="password">Your password: </label>
+                <input class="sign-in-form__field" type="password" name="password" id="password">
+                <label class="sign-in-form__label" for="field_1">New e-mail: </label>
+                <input class="sign-in-form__field" type="text" name="email" id="field_1">
+                <label class="sign-in-form__label" for="field_2">Please, repeat: </label>
+                <input class="sign-in-form__field" type="text" name="email2" id="field_2">
+                <button class="popup__submit sign-in-form__submit" type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</template>
+
+<template id="answer">
+    <div class="popup__wrapper">
+        <div class="overlay"></div>
+        <div class="popup popup__result">
+            <p class="popup__answer">{answer}</p>
+            <button class="popup__close"></button>
+            <button class="popup__submit sign-in-form__submit" type="submit">ok</button>
+        </div>
+    </div>
+</template>
+
+<script src="js/check_repeated_form_inputs.js"></script><script src="js/popup_listeners.js"></script>
+</body>
+</html>

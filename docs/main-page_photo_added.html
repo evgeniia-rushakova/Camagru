@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Jslave Camagru</title>
+</head>
+<body>
+<header class="main-header">
+    <div class="main-header__container">
+        <a class="main-header__logo" href="index.html"><img src="img/system_img/CamaGru.png" alt="logo" width="156" height="27"></a>
+        <div class="navigation__container">
+            <nav class="main-header__navigation">
+                <ul class="main-navigation__menu">
+                    <li class="main-navigation__link"><a href="gallery.html">Gallery</a></li>
+                    <li class="main-navigation__link"><a href="main-page.html">Make photo</a></li>
+                </ul>
+            </nav>
+            <nav class="user-navigation">
+                <ul class="user-navigation__menu">
+                    <li class="user-navigation__link"><a href="cabinet.html" class="sign-in-icon">Cabinet</a></li>
+                    <li class="user-navigation__link"><a href="index.html" class="sign-in-icon">log out</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="additional_container">
+        <div class="main-camagru-container">
+            <div class="main-camagru-wrapper" style="position: relative">
+                <form action="../php/photo_to_gallery_upload.php" method="post" class=" main-camagru__upload-file cabinet__avatar-form" style="position: absolute;top: 0;
+         left: 0;" enctype="multipart/form-data">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="500000000">
+                    <label for="file" class="cabinet__avatar__upload-label">Choose file...</label>
+                    <input class="cabinet__avatar__upload" type="file" required id="file" name="userfile" accept=".jpg, .jpeg, .png .bmp .gif">
+                    <button class="cabinet__avatar-button" type="submit">Load</button>
+                </form>
+                <form class="main-camagru__form" action="../php/camera.php" style="padding-top: 40px;" method="post"">
+                <div class="main-camagru__upload file_upload-container">
+                    <div class="main-camagru__preview">
+                        <video id="videoTag"  autoplay muted class="view--video__video"></video>
+                        <canvas class="canvas" style="display:none;"></canvas>
+                        <input type="hidden" class="canvas--photo" name="photo">
+                        <div class="main-camagru__loaded-img">
+                            <img  id="img" src="img/temp_img/admin_temp_file.jpg" alt="here will be your uploaded image">
+                        </div>
+                        <div class="main-camagru__buttons buttons">
+                            <input class="buttons__camera-radio" type="radio" name="file_type" value="camera" id="radio_camera" required checked>
+                            <label class="buttons__camera-label" for="radio_camera"></label>
+                            <input class="buttons__upload-radio" type="radio" name="file_type" value="upload" id="radio_upload" required>
+                            <label class="buttons__upload-label" for="radio_upload"></label>
+                        </div>
+                    </div>
+                    <button type="submit" class="main-camagru__submit">CamaGru</button>
+                    <div class="main-camagru-filters-container filters">
+                        <h3 class="gallery-container--inner-title filters__title">Stickers:</h3>
+                        <div class="filters__list">
+
+                            <input type="checkbox" class="filter__radio" id="filter1" name="filter_1" value="filter_(1).png">
+                            <label for="filter1" class="filters__item"><img class="filters__img" src="img/filters/filter_(1).png" alt="filter_(1).png"></label>
+                            <input type="checkbox" class="filter__radio" id="filter2" name="filter_2" value="filter_(10).png">
+                            <label for="filter2" class="filters__item"><img class="filters__img" src="img/filters/filter_(10).png" alt="filter_(10).png"></label>
+                            <input type="checkbox" class="filter__radio" id="filter3" name="filter_3" value="filter_(11).png">
+                            <label for="filter3" class="filters__item"><img class="filters__img" src="img/filters/filter_(11).png" alt="filter_(11).png"></label>
+                            <input type="checkbox" class="filter__radio" id="filter4" name="filter_4" value="filter_(12).png">
+                            <label for="filter4" class="filters__item"><img class="filters__img" src="img/filters/filter_(12).png" alt="filter_(12).png"></label>
+                            <input type="checkbox" class="filter__radio" id="filter5" name="filter_5" value="filter_(2).png">
+                            <label for="filter5" class="filters__item"><img class="filters__img" src="img/filters/filter_(2).png" alt="filter_(2).png"></label>
+                            <input type="checkbox" class="filter__radio" id="filter6" name="filter_6" value="filter_(3).png">
+                            <label for="filter6" class="filters__item"><img class="filters__img" src="img/filters/filter_(3).png" alt="filter_(3).png"></label>
+                            <input type="checkbox" class="filter__radio" id="filter7" name="filter_7" value="filter_(4).png">
+                            <label for="filter7" class="filters__item"><img class="filters__img" src="img/filters/filter_(4).png" alt="filter_(4).png"></label>
+                            <input type="checkbox" class="filter__radio" id="filter8" name="filter_8" value="filter_(5).png">
+                            <label for="filter8" class="filters__item"><img class="filters__img" src="img/filters/filter_(5).png" alt="filter_(5).png"></label>
+                            <input type="checkbox" class="filter__radio" id="filter9" name="filter_9" value="filter_(6).png">
+                            <label for="filter9" class="filters__item"><img class="filters__img" src="img/filters/filter_(6).png" alt="filter_(6).png"></label>
+                            <input type="checkbox" class="filter__radio" id="filter10" name="filter_10" value="filter_(7).png">
+                            <label for="filter10" class="filters__item"><img class="filters__img" src="img/filters/filter_(7).png" alt="filter_(7).png"></label>
+                            <input type="checkbox" class="filter__radio" id="filter11" name="filter_11" value="filter_(8).png">
+                            <label for="filter11" class="filters__item"><img class="filters__img" src="img/filters/filter_(8).png" alt="filter_(8).png"></label>
+                            <input type="checkbox" class="filter__radio" id="filter12" name="filter_12" value="filter_(9).png">
+                            <label for="filter12" class="filters__item"><img class="filters__img" src="img/filters/filter_(9).png" alt="filter_(9).png"></label>
+                        </div>
+                        <div class="filter__settings">
+                            <div class="filter__radio-wrapper">
+                                <p class="filter__settings--title">vertical position(%)</p>
+                                <div class="range-wrap">
+                                    <input class="range" type="range" min="0" max="100" name="position_vert" value="50" id="vert">
+                                    <output class="bubble"></output>
+                                </div>
+                            </div>
+                            <div class="filter__radio-wrapper">
+                                <p class="filter__settings--title">horizontal position(%)</p>
+                                <div class="range-wrap">
+                                    <input type="range" class="range" min="0" max="100" name="position_hor" value="50" id="hor">
+                                    <output class="bubble"></output>
+                                </div>
+
+                            </div>
+                            <div class="filter__radio-wrapper">
+                                <p class="filter__settings--title">filter scale(%)</p>
+                                <div class="range-wrap">
+                                    <input type="range" class="range" min="1" max="100" name="scale" value="50" id="scale">
+                                    <output class="bubble"></output>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <aside class="gallery-container gallery-container--inner">
+                <h3 class="gallery-container--inner-title">Your latest photos:</h3>
+                <div class="gallery--item ">
+                    <a href="photo.html"><img class="gallery--item__img " src="img/gallery_photos/Rectangle_Copy_9.png" alt="from admin" width="150px" height="auto"></a>
+                </div>
+                <div class="gallery--item ">
+                    <a href="photo.html"><img class="gallery--item__img " src="img/gallery_photos/Rectangle_Copy_8.png" alt="from admin" width="150px" height="auto"></a>
+                </div>
+                <div class="gallery--item ">
+                    <a href="photo.html"><img class="gallery--item__img " src="img/gallery_photos/Rectangle_Copy_6.png" alt="from admin" width="150px" height="auto"></a>
+                </div>
+                <div class="gallery--item ">
+                    <a href="photo.html"><img class="gallery--item__img " src="img/gallery_photos/Rectangle_Copy_5.png" alt="from admin" width="150px" height="auto"></a>
+                </div>
+
+            </aside>
+        </div>
+        <div class="filter__new-sticker">
+            <h3 class="profile__title filter__new-sticker--title"> Add your own sticker:</h3>
+            <form action="../php/add_new_sticker.php" method="post" enctype="multipart/form-data" class="filter__new-sticker-form" >
+                <input type="hidden" name="MAX_FILE_SIZE" value="500000000">
+                <label for="file2" class="cabinet__avatar__upload-label">Choose png</label>
+                <input class="cabinet__avatar__upload2" type="file" required id="file2" name="userfile" accept=".png">
+                <button class="cabinet__avatar-button" type="submit">Load</button>
+            </form>
+        </div>
+    </div>
+
+</main>
+<footer class="main-footer">
+    <div class="footer__container">
+        <ul class="footer-social">
+            <li class="footer-social__link social__git"><a href="#" aria-level="github account">github</a></li>
+            <li class="footer-social__link social__42"><a href="#" aria-label="intra42 account">intra 42</a></li>
+            <li class="footer-social__link social__insta"><a href="#" aria-level="instagram account">instagram</a></li>
+        </ul>
+        <div class="author">
+            <a href="#" class="author__name">Making by Jslave in 2020.</a>
+        </div>
+    </div>
+</footer>
+
+<template id="photo_result">
+    <div class="popup__wrapper-photo">
+        <div class="overlay"></div>
+        <div class="popup__photo">
+            <div class="popup__photo-wrapper">
+                <a href="../php/delete_temp_photos.php" class="popup__close" ></a>
+                <div class="popup__photo-result">
+                    <img src="{img_src}" alt="" class="popup__photo--src">
+                </div>
+                <form class="popup__form" action="../php/save-download-result.php">
+                    <input type="hidden" name="act" value="gallery">
+                    <label for="comment">
+                        <input type="text" required id="comment" maxlength="300" name="description" placeholder="Your description..." class="photo__comment-form--new">
+                    </label>
+                    <button class="sign-in-form__submit popup__submit--save" type="submit">Save to gallery</button>
+                </form>
+                <form class="popup__form" action="../php/save-download-result.php">
+                    <input type="hidden" name="act" value="download">
+                    <button class="sign-in-form__submit popup__submit--download " type="submit">Download</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script src="js/upload_camera_buttons.js"></script><script src="js/range.js"></script><script src="js/camagru.js"></script><script src="js/stickers.js"></script>
+</body>
+</html>
