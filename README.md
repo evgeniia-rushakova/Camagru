@@ -11,4 +11,4 @@ ___________________________________________________
 <li>Apache как локальный сервер</li>
 </ul>
 <h6><a href="https://evgeniia-rushakova.github.io/fantastic-doodle-camagru/">Ссылка на копию Github-Pages</a></h6>
-![Demo](https://github.com/evgeniia-rushakova/fantastic-doodle-camagru/blob/master/docs/Screen%20recording%20(1).gif)
+<img src="https://github.com/evgeniia-rushakova/fantastic-doodle-camagru/blob/master/docs/Screen%20recording%20(1).gif" alt="demo">
