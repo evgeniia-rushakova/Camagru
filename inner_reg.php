@@ -10,7 +10,7 @@ if (isset($_GET) && isset($_GET['act']) && strcmp($_GET['act'], "change_password
 	$content = file_get_contents("tpl/change_pass--layout.php");
 
 	$pdo = connect_to_database();
-	$smtp = $pdo->prepare("SELECT * FROM Users WHERE email = ?");
+	$smtp = $pdo->prepare("SELECT * FROM users WHERE email = ?");
 	$smtp->execute(array($_GET['email']));
 	$user = $smtp->fetch()['user'];
 

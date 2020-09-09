@@ -139,7 +139,7 @@ function generate_profile_content($content, $info, $pdo)
 function get_user_info($pdo)
 {
 	$user = $_SESSION['user'];
-	$smtp = $pdo->prepare("SELECT * FROM Users WHERE user = ?");
+	$smtp = $pdo->prepare("SELECT * FROM users WHERE user = ?");
 	$smtp->execute(array($user));
 	$info = $smtp->fetch();
 

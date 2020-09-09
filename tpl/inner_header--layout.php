@@ -1,6 +1,6 @@
 <header class="main-header">
     <div class="main-header__container">
-        <a class="main-header__logo" href="../index.php"><img src="img/CamaGru.png" alt="logo" width="156" height="27"></a>
+        <a class="main-header__logo" href="../index.php"><img src="../img/system_img/CamaGru.png" alt="logo" width="156" height="27"></a>
         <div class="navigation__container">
             <nav class="main-header__navigation">
                 <ul class="main-navigation__menu">

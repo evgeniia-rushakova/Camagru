@@ -30,7 +30,7 @@ function check_user_is_parent_of_photo()
 		$pdo = connect_to_database();
 		$photo_arr = explode("/",$_GET['photo']);
 		$photo = $photo_arr[count($photo_arr) - 1];
-		$smtp = $pdo->prepare("SELECT * FROM Users WHERE user = ?");
+		$smtp = $pdo->prepare("SELECT * FROM users WHERE user = ?");
 		$smtp->execute(array($user));
 		$user_id = $smtp->fetch()['id'];
 

@@ -37,7 +37,7 @@ function get_like($photo_info, $likes_table, $user_id)
 		$smtp = $pdo->prepare("UPDATE photos SET likes = ? WHERE id = ?");
 		$smtp->execute(array(1, $photo_id));
 	} else if ($likes_table['value'] == -1) {
-		$smtp = $pdo->prepare("UPDATE LIKES SET VALUE = ? WHERE photo_id = ? AND who_liked_id = ?");
+		$smtp = $pdo->prepare("UPDATE likes SET VALUE = ? WHERE photo_id = ? AND who_liked_id = ?");
 		$smtp->execute(array('1', $photo_id, $user_id));
 
 		$dislikes = $photo_info['dislikes'] - 1;
@@ -60,7 +60,7 @@ function get_dislike($photo_info, $likes_table, $user_id)
 		$smtp = $pdo->prepare("UPDATE photos SET dislikes = ? WHERE id = ?");
 		$smtp->execute(array(1, $photo_id));
 	} else if ($likes_table['value'] == 1) {
-		$smtp = $pdo->prepare("UPDATE LIKES SET VALUE = ? WHERE photo_id = ? AND who_liked_id = ?");
+		$smtp = $pdo->prepare("UPDATE likes SET VALUE = ? WHERE photo_id = ? AND who_liked_id = ?");
 		$smtp->execute(array('-1', $photo_id, $user_id));
 
 		$dislikes = $photo_info['dislikes'] + 1;
@@ -98,7 +98,7 @@ function ajax_like() {
 
 	if (isset($_GET['value']))
 	{
-		$smtp = $pdo->prepare("SELECT * FROM Users WHERE user = ?");
+		$smtp = $pdo->prepare("SELECT * FROM users WHERE user = ?");
 		$smtp->execute(array($_SESSION['user']));
 		$user_id = $smtp->fetch()['id'];
 		$likes_table = get_likes_from_table($photo_info['id'], $user_id);

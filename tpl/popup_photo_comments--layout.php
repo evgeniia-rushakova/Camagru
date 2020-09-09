@@ -4,10 +4,10 @@
             <img src="{img_src}" alt="{img_alt}" class="photo__img" width="{img_width}" height="{img_height}">
         </div>
         <div class="photo__reactions">
-            <p class="photo__like_counter"> <a class="photo__like_icon likelink" href="../php/ajax_like.php?value=1&photo={img_alt}"><img src="../img/like.png" alt="likes" width="28" height="28"></a><span><b class="ajaxlike"></b> likes</span></p>
-            <p class="photo__like_counter"><a class="photo__like_icon dislikelink" href="../php/ajax_like.php?value=-1&photo={img_alt}"><img src="../img/dislike.png" alt="dislikes" width="28" height="28"></a><span><b class="ajaxdislike"></b> dislikes</span></p>
+            <p class="photo__like_counter"> <a class="photo__like_icon likelink" href="../php/ajax_like.php?value=1&photo={img_alt}"><img src="../img/system_img/like.png" alt="likes" width="28" height="28"></a><span><b class="ajaxlike"></b> likes</span></p>
+            <p class="photo__like_counter"><a class="photo__like_icon dislikelink" href="../php/ajax_like.php?value=-1&photo={img_alt}"><img src="../img/system_img/dislike.png" alt="dislikes" width="28" height="28"></a><span><b class="ajaxdislike"></b> dislikes</span></p>
             <form action="../php/delete_photo.php?photo={img_src}" method="post">
-                <button type="submit" class="photo__del" aria-label="delete photo"><img src="../img/trash.png" alt="delete" width="35" height="35"></button>
+                <button type="submit" class="photo__del" aria-label="delete photo"><img src="../img/system_img/trash.png" alt="delete" width="35" height="35"></button>
             </form>
         </div>
     </div>

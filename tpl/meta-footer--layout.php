@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-    <!--<link rel="preload" href="../css/style.css" as="style">-->
     <link rel="stylesheet" type="text/css" href="../css/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <title>Jslave Camagru</title>
@@ -22,7 +21,7 @@
             <li class="footer-social__link social__insta"><a href="https://www.instagram.com/jane_vermilion/" aria-level="instagram account">instagram</a></li>
         </ul>
         <div class="author">
-            <a href="#" class="author__name">Making by Jslave in 2020.</a>
+            <a href="https://21.extech.ru/index.php" class="author__name">by Jslave in 2020.</a>
         </div>
     </div>
 </footer>

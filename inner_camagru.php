@@ -37,7 +37,9 @@ $file = str_replace('{filters}', $filters, $file);
 $templates=$photo;
 if (isset($_SESSION['file']))
 	$file = str_replace('{uploaded_img}',"../img/temp_img/". $_SESSION['file'],$file);
-$scripts ='<script src="js/upload_camera_buttons.js"></script>'. '<script src="js/camagru.js"></script>';
+else
+	$file = str_replace('{uploaded_img}',"../img/system_img/upl.png", $file);
+$scripts ='<script src="js/upload_camera_buttons.js"></script>'. '<script src="js/range.js"></script>' . '<script src="js/camagru.js"></script>'. '<script src="js/stickers.js"></script>';
 $file = str_replace('{templates}',$templates, $file);
 $file = str_replace('{scripts}',$scripts, $file);
 $pdo = null;

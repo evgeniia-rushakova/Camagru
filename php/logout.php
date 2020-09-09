@@ -8,5 +8,6 @@ if(!isset($_SESSION['user'])|| $_SESSION['user']==false)
 	exit;
 }
 delete_temp_photos();
+$_SESSION['user'] = null;
 session_destroy();
 header("Location: "."../index.php");

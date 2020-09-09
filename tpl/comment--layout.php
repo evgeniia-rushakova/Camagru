@@ -11,6 +11,6 @@
         <input type="hidden" name="act" value="delete">
         <input type="hidden" name="comment-date" value="{comment-date}">
         <input type="hidden" name="comment-text" value="{comment-text}">
-        <button type="submit" class="comment__delete-comment"><img src="../img/cross.png" alt="delete comment" width="14" height="14" aria-label="delete comment"></button>
+        <button type="submit" class="comment__delete-comment"><img src="../img/system_img/cross.png" alt="delete comment" width="14" height="14" aria-label="delete comment"></button>
     </form>
 </div>

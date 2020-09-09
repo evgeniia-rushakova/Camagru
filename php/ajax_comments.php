@@ -29,13 +29,13 @@ function send_mail_to_user_about_new_comment($author_email, $comment_author, $ph
 {
 	$subject = "New comment to yur photo!";
 	$to = $author_email;
-	$link = "http://localhost/photo_page.php?" . $photo;
+	$link =  "http://" . $_SERVER['HTTP_HOST'] . "/photo_page.php?" . $photo;
 
-	$message = "Hello! User $comment_author commented your <a href=$link>photo</a>: $comment_text";
-	$headers = array(
-		'From' => 'cat_lover@list.ru',
-		'Reply-To' => 'cat_lover@list.ru'
-	);
+	$message = "Hello! User $comment_author commented your <a href='$link'>photo</a>: $comment_text";
+	$headers =
+		'From: Camagru <21@extech.ru>'
+		. "\r\n" . 'Reply-To: <21@extech.ru>'
+		. "\r\n" . 'Content-Type: text/html; charset=utf-8';
 	mail($to, $subject, $message, $headers);
 }
 
@@ -70,14 +70,13 @@ function delete_comment_ajax($pdo, $photo_info)
 {
 	if(isset($_SESSION['user'])) {
 		$user = $_SESSION['user'];
-		$comment_text = $_POST['comment-text'];
 		$comment_date = $_POST['comment-date'];
-		$smtp = $pdo->prepare("SELECT * FROM Users WHERE user = ?");
+		$smtp = $pdo->prepare("SELECT * FROM users WHERE user = ?");
 		$smtp->execute(array($user));
 		$user_id = $smtp->fetch()['id'];
 
-		$smtp = $pdo->prepare("SELECT * FROM comments WHERE comment_text = ? and date_of_comment = ?");
-		$smtp->execute(array($comment_text, $comment_date));
+		$smtp = $pdo->prepare("SELECT * FROM comments WHERE date_of_comment = ?");
+		$smtp->execute(array($comment_date));
 		$result = $smtp->fetch();
 		$comment_author_id = $result['comment_author'];
 		$comment_id = $result['id'];

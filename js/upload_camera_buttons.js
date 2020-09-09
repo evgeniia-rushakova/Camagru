@@ -10,7 +10,6 @@
 
     var checkCheckboxChanging = function () {
         if (uploadButton.checked == true) {
-            console.log("upload checked");
             if (uploadForm.classList.contains("visually-hidden"))
                 uploadForm.classList.remove("visually-hidden");
             if (uploadedImgWindow.classList.contains("visually-hidden"))
@@ -18,7 +17,6 @@
             videoWindow.classList.add("visually-hidden");
         }
         if (cameraButton.checked == true) {
-            console.log("camera checked");
             uploadForm.classList.add("visually-hidden");
             if (videoWindow.classList.contains("visually-hidden"))
                 videoWindow.classList.remove("visually-hidden");

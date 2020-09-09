@@ -1,23 +1,23 @@
 'use_strict';
 
-(function () {
+(function() {
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
     if (navigator.getUserMedia) {
         navigator.getUserMedia({
-                audio: true,
+                audio: false,
                 video: {
-                    width: 400,
-                    height: 400
+                    width: 640,
+                    height: 480
                 }
             },
-            function (stream) {
+            function(stream) {
                 var video = document.querySelector('video');
                 video.srcObject = stream;
-                video.onloadedmetadata = function (e) {
+                video.onloadedmetadata = function(e) {
                     video.play();
                 };
             },
-            function (err) {
+            function(err) {
                 console.log("The following error occurred: " + err.name);
             }
         );
@@ -41,7 +41,7 @@
         imSrcPlace.maxHeight = "30%";
         main.appendChild(popup);
         const button_close = document.querySelector(".popup__close");
-        button_close.addEventListener("click", function () {
+        button_close.addEventListener("click", function() {
             var win = document.querySelector(".popup__wrapper-photo");
             main.removeChild(win);
             document.location.href = "../inner_camagru.php";
@@ -58,7 +58,7 @@
     var height = 480;
 
 
-    var take_photo = function () {
+    var take_photo = function() {
         if (cameraButton.checked == true) {
             canvas.setAttribute('width', width);
             canvas.setAttribute('height', height);
@@ -69,7 +69,7 @@
 
     };
 
-    mainCamagruButton.addEventListener("click", function () {
+    mainCamagruButton.addEventListener("click", function() {
         take_photo();
     });
 

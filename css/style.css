@@ -24,8 +24,12 @@
   font-style: normal;
   font-weight: normal;
 }
-
-
+@font-face {
+  font-family: "Ubuntu";
+  src: url("../fonts/Ubuntu-Regular.ttf") format("ttf");
+  font-style: normal;
+  font-weight: normal;
+}
 body {
   margin: 0 20px;
   padding: 0;
@@ -92,7 +96,7 @@ main {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -443,7 +447,7 @@ main {
   padding: 10px;
 }
 .sign-in-form__label {
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -462,7 +466,7 @@ main {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #0a0a0a;
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -503,7 +507,7 @@ main {
   }
 }
 .sign-in-form__reg {
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -535,7 +539,7 @@ main {
   }
 }
 .sign-in-form__submit {
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -656,9 +660,9 @@ main {
     margin: 4px;
   }
   .gallery--item img {
-    max-width: 150px;
+    max-width: 200px;
     height: auto;
-    max-height: 150px;
+    max-height: 200px;
   }
   .gallery-container {
     -ms-flex-pack: distribute;
@@ -681,7 +685,7 @@ main {
 }
 .photo__src {
   max-width: 650px;
-  max-height: 650px;
+ /* max-height: 650px;*/
   position: relative;
   margin-bottom: 27px;
 }
@@ -715,7 +719,7 @@ main {
   position: relative;
 }
 .photo__like_counter {
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -764,7 +768,7 @@ main {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -787,7 +791,7 @@ main {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -844,7 +848,7 @@ main {
 }
 .photo__description,
 .comment__description {
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu",sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -901,7 +905,7 @@ main {
 .photo__comment-form--new {
   background-color: transparent;
   border: none;
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -919,7 +923,7 @@ main {
 .photo__comment-form--send {
   border: none;
   background: transparent;
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -962,6 +966,7 @@ main {
   }
   .photo__container--photo_info {
     margin: 0 auto;
+    max-width: 90%;
   }
   .photo__src {
     margin: 0 auto;
@@ -1034,7 +1039,7 @@ main {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -1069,8 +1074,8 @@ main {
     line-height: 16px;
   }
 }
-.cabinet__avatar__upload {
-  font-family: "CalibreRegular", sans-serif;
+.cabinet__avatar__upload, .cabinet__avatar__upload2 {
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -1079,21 +1084,28 @@ main {
   font-size: 14px;
   max-width: 150px;
 }
+.cabinet__avatar__upload2
+{
+  min-height: 20px;
+}
+
+
 @media (max-width: 768px) {
   .cabinet__avatar__upload {
     font-size: 14px;
     line-height: 16px;
   }
 }
-.cabinet__avatar__upload::-webkit-file-upload-button {
+.cabinet__avatar__upload::-webkit-file-upload-button, .cabinet__avatar__upload2::-webkit-file-upload-button {
   position: absolute;
   clip: rect(0 0 0 0);
   width: 1px;
   height: 1px;
   margin: -1px;
 }
+
 .cabinet__avatar__upload-label {
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -1117,7 +1129,7 @@ main {
 .cabinet__avatar-button {
   background: transparent;
   border: none;
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -1137,7 +1149,7 @@ main {
   opacity: 1;
 }
 .profile {
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -1152,7 +1164,7 @@ main {
   }
 }
 .profile__title {
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -1192,7 +1204,7 @@ main {
 }
 .profile__change {
   min-width: 150px;
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -1354,9 +1366,14 @@ main {
     max-width: 45%;
   }
 }
+.additional_container
+{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1200px;
+}
 .main-camagru-container {
-  margin: 0 auto;
-  max-width: 1200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1400,7 +1417,7 @@ main {
 .gallery-container--inner-title {
   margin: 0;
   padding: 0;
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   font-weight: 400;
   text-decoration: none;
@@ -1426,7 +1443,7 @@ main {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  min-width: 640px;
+  min-width: 480px;
   min-height: 480px;
   border-radius: 20px;
   margin-bottom: 24px;
@@ -1481,7 +1498,7 @@ main {
   z-index: 10;
 }
 .main-camagru__upload-file label {
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -1495,7 +1512,7 @@ main {
   }
 }
 .main-camagru__submit {
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -1545,7 +1562,7 @@ main {
   cursor: pointer;
   display: inline-block;
   margin: 5px;
-  background: url("../img/photo.png");
+  background: url("../img/system_img/photo.png");
   background-position: center;
   background-size: 20px;
   background-repeat: no-repeat;
@@ -1568,7 +1585,7 @@ main {
   border-radius: 20px;
   cursor: pointer;
   display: inline-block;
-  background: url("../img/upload.png");
+  background: url("../img/system_img/upload.png");
   background-position: center;
   background-size: 20px;
   background-repeat: no-repeat;
@@ -1635,7 +1652,7 @@ main {
     min-width: 80%;
     max-width: 100%;
     min-height: 150px;
-    max-height: 40vh;
+ /*   max-height: 40vh;*/
     margin: 10px auto 100px;
   }
   .main-camagru__buttons {
@@ -1730,7 +1747,7 @@ main {
   flex-direction: column;
 }
 .filter__settings--title {
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -1739,14 +1756,33 @@ main {
   padding: 0;
   margin: 0;
 }
+.filter__new-sticker
+{
+  margin-top: 20px;
+  padding-left: 15px;
+  position: relative;
+}
+
+.filter__new-sticker-form
+{
+  display: flex;
+  flex-direction: row;
+  justify-items: baseline;
+  justify-content: flex-start;
+}
+
 @media (max-width: 768px) {
+  .filter__new-sticker
+  {
+    padding: 0;
+  }
   .filter__settings--title {
     font-size: 14px;
     line-height: 16px;
   }
 }
 .filter__setting--label {
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -1850,6 +1886,10 @@ main {
   color: #0a0a0a;
 }
 @media (max-width: 768px) {
+  .footer-social__link {
+    margin-right: 0;
+    margin: 5px;
+  }
   .footer-social__link a,
   .author a {
     font-size: 12px;
@@ -1867,6 +1907,8 @@ main {
     -ms-flex-direction: column;
     flex-direction: column;
     font-size: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
   .footer-social {
     margin: 0 auto;
@@ -1901,7 +1943,7 @@ main {
   width: 20px;
   height: 20px;
   cursor: pointer;
-  background: transparent url("../../img/cross.png") no-repeat;
+  background: transparent url("../img/system_img/cross.png") no-repeat;
 }
 .popup__close:hover {
   -webkit-filter: invert(39%) sepia(71%) saturate(949%) hue-rotate(331deg) brightness(113%) contrast(88%);
@@ -1922,7 +1964,7 @@ main {
 .popup__answer {
   padding: 10px;
   text-align: center;
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -1987,6 +2029,8 @@ main {
   box-shadow: 0px 0px 8px -1px rgba(255,70,3,1);
   max-width: 400px;
   margin: 0 auto;
+  max-height: 50vh;
+  display: block;
 }
 @media (max-width: 768px) {
   .popup__photo--src {
@@ -2005,7 +2049,7 @@ main {
   text-align: center;
 }
 .pagination__link {
-  font-family: "CalibreRegular", sans-serif;
+  font-family: "CalibreRegular", "Ubuntu", sans-serif;
   font-size: 18px;
   line-height: 27px;
   font-weight: 400;
@@ -2053,4 +2097,120 @@ main {
   -webkit-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
+}
+.sticker-text
+{
+  color: white;
+  text-align: center;
+  font-family: Ubuntu, sans-serif;
+  display: block;
+  vertical-align: center;
+}
+input[type=range] {
+  width: 100%;
+  margin: 9.3px 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  background: rgba(230, 193, 133, 0.5);
+  border: 0;
+  border-radius: 3.3px;
+  width: 100%;
+  height: 6.4px;
+  cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  margin-top: -9.3px;
+  width: 10px;
+  height: 25px;
+  background: #e87224;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 6px;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #eacc9a;
+}
+input[type=range]::-moz-range-track {
+  background: rgba(230, 193, 133, 0.5);
+  border: 0;
+  border-radius: 3.3px;
+  width: 100%;
+  height: 6.4px;
+  cursor: pointer;
+}
+input[type=range]::-moz-range-thumb {
+  width: 10px;
+  height: 25px;
+  background: #e87224;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 6px;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 10.3px 0;
+  color: transparent;
+  width: 100%;
+  height: 6.4px;
+  cursor: pointer;
+}
+input[type=range]::-ms-fill-lower {
+  background: #e2b670;
+  border: 0;
+  border-radius: 6.6px;
+}
+input[type=range]::-ms-fill-upper {
+  background: rgba(230, 193, 133, 0.5);
+  border: 0;
+  border-radius: 6.6px;
+}
+input[type=range]::-ms-thumb {
+  width: 10px;
+  height: 25px;
+  background: #e87224;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 0px;
+  /*Needed to keep the Edge thumb centred*/
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: rgba(230, 193, 133, 0.5);
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #eacc9a;
+}
+/*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
+how to remove the virtical space around the range input in IE*/
+@supports (-ms-ime-align:auto) {
+  /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+  input[type=range] {
+    margin: 0;
+    /*Edge starts the margin from the thumb, not the track as other browsers do*/
+  }
+}
+.range-wrap {
+  position: relative;
+  margin: 0 auto 3rem;
+}
+.range {
+  width: 100%;
+}
+.bubble {
+  background: transparent;
+  padding: 4px 5px;
+  position: absolute;
+  border-radius: 4px;
+  left: 50%;
+  top: 30px;
+  transform: translateX(-50%);
+  z-index: 5;
+  color:  #f06546;
 }

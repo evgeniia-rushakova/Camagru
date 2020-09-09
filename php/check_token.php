@@ -10,7 +10,7 @@ if(isset($_GET))
 function check_token($email, $token)
 {
 	$pdo = connect_to_database();
-	$check = $pdo->prepare("SELECT COUNT(*) FROM Users where email = ? AND token = ?");
+	$check = $pdo->prepare("SELECT COUNT(*) FROM users where email = ? AND token = ?");
 	$check->execute(array(
 		$email,
 		$token
@@ -18,7 +18,7 @@ function check_token($email, $token)
 	$count_user = $check->fetchColumn();
 	if ($count_user == 1)
 	{
-		$confirm = $pdo->prepare("UPDATE Users SET accepted_email = TRUE WHERE email = ?");
+		$confirm = $pdo->prepare("UPDATE users SET accepted_email = TRUE WHERE email = ?");
 		$confirm->execute([$email]);
 		$smtp = $pdo->prepare("UPDATE users SET token = ? where email = ?");
 		$rand_token =bin2hex(random_bytes(20));

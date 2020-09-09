@@ -11,59 +11,16 @@ function get_settings_for_filter($photo_id, $filter_id)
 	$sourcefile_width=imageSX($photo_id);
 	$sourcefile_height=imageSY($photo_id);
 	$watermarkfile_width=imageSX($filter_id);
-	switch ($_POST['scale'])
-	{
-		case  "60":
-			{
-				$filter_id = imagescale($filter_id, $watermarkfile_width * 0.6);
-				break;
-			}
+	$filter_id = imagescale($filter_id, $watermarkfile_width * $_POST['scale']/100);
 
-		case "30":
-			{
-				$filter_id = imagescale($filter_id, $watermarkfile_width * 0.3);
-				break;
-			}
-	}
 	$settings['filt_w'] = imageSX($filter_id);
 	$settings['filt_h'] = imageSY($filter_id);
 	$settings['filt_id'] = $filter_id;
-	switch ($_POST['position_vert'])
-	{
-		case  "top":
-			{
-				$settings['pos_y'] = 0;
-				break;
-			}
-
-		case "bottom":
-			{
-				$settings['pos_y'] = $sourcefile_height - $settings['filt_h'];
-				break;
-			}
-
-		default:
-			$settings['pos_y'] = ( $sourcefile_height / 2 ) - ( $settings['filt_h'] / 2 );
-	}
-	switch ($_POST['position_hor'])
-	{
-		case  "left":
-			{
-				$settings['pos_x'] = 0;
-				break;
-			}
-
-		case "right":
-			{
-				$settings['pos_x'] = $sourcefile_width - $settings['filt_w'];
-				break;
-			}
-
-		default:
-			$settings['pos_x'] = ( $sourcefile_width / 2 ) - ( $settings['filt_w'] / 2 );
-	}
+	$settings['pos_x'] = floor(($sourcefile_width - $settings['filt_w']) * $_POST['position_hor']/100);
+	$settings['pos_y'] = floor(($sourcefile_height - $settings['filt_h']) * $_POST['position_vert']/100);
 	return ($settings);
 }
+
 
 function get_image_data()
 {
@@ -102,6 +59,7 @@ function get_image_data()
 		$info['format'] = $type;
 		switch ($type)
 		{
+			case "jpeg":
 			case "jpg":
 			{
 				$info['photo_id'] = imagecreatefromjpeg($info['photo']);
@@ -165,6 +123,7 @@ function mix_photo()
 				imagedestroy($filter_id);
 				switch ($info['format'])
 				{
+					case "jpeg":
 					case "jpg":
 					{
 						imagejpeg ($photo_id, $new_photo_name);

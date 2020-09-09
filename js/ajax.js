@@ -16,14 +16,14 @@ function CreateRequest() {
 
 function addListenersOnComments() {
     let deleteCommentButtonsForms = document.querySelectorAll(".delete-comment");
-    deleteCommentButtonsForms.forEach(function (currentValue, currentIndex, listObj) {
-        currentValue.removeEventListener("submit", function (evt) {
-            callback(deleteComment, 'http://localhost/php/ajax_comments.php', evt)
+    deleteCommentButtonsForms.forEach(function(currentValue, currentIndex, listObj) {
+        currentValue.removeEventListener("submit", function(evt) {
+            callback(deleteComment, '../php/ajax_comments.php', evt)
         })
     });
-    deleteCommentButtonsForms.forEach(function (currentValue, currentIndex, listObj) {
-        currentValue.addEventListener("submit", function (evt) {
-            callback(deleteComment, 'http://localhost/php/ajax_comments.php', evt)
+    deleteCommentButtonsForms.forEach(function(currentValue, currentIndex, listObj) {
+        currentValue.addEventListener("submit", function(evt) {
+            callback(deleteComment, '../php/ajax_comments.php', evt)
         })
     });
 }
@@ -34,7 +34,7 @@ function likesLoad(link, evt) {
     let request = CreateRequest();
     let href = link;
     request.open('GET', href, true);
-    request.addEventListener('readystatechange', function () {
+    request.addEventListener('readystatechange', function() {
         if ((request.readyState == 4) && (request.status == 200)) {
             const req = request.responseText;
             const response = JSON.parse(request.responseText);
@@ -56,7 +56,7 @@ function deleteComment(link, evt) {
     let href = link;
     request.open('POST', href, true);
     request.send(formData);
-    request.addEventListener('readystatechange', function () {
+    request.addEventListener('readystatechange', function() {
         if ((request.readyState == 4) && (request.status == 200)) {
             const req = request.responseText;
             let comments = document.getElementById("ajaxcomments");
@@ -72,7 +72,7 @@ function commentsLoad(link, evt) {
     let request = CreateRequest();
     let href = link;
     request.open('GET', href, true);
-    request.addEventListener('readystatechange', function () {
+    request.addEventListener('readystatechange', function() {
         if ((request.readyState == 4) && (request.status == 200)) {
             const req = request.responseText;
             let comments = document.getElementById("ajaxcomments");
@@ -92,7 +92,7 @@ function addNewComment(link, evt) {
     let href = link;
     request.open('POST', href, true);
     request.send(formData);
-    request.addEventListener('readystatechange', function () {
+    request.addEventListener('readystatechange', function() {
 
         if ((request.readyState == 4) && (request.status == 200)) {
             const req = request.responseText;
@@ -111,21 +111,21 @@ let likelink = document.querySelector(".likelink");
 let dislikelink = document.querySelector(".dislikelink");
 let form = document.querySelector(".photo__comment-form--form");
 
-form.addEventListener("submit", function (evt) {
-    callback(addNewComment, 'http://localhost/php/ajax_comments.php', evt)
+form.addEventListener("submit", function(evt) {
+    callback(addNewComment, '../php/ajax_comments.php', evt)
 });
 
-likelink.addEventListener("click", function (evt) {
+likelink.addEventListener("click", function(evt) {
     callback(likesLoad, likelink.href, evt)
 }, false);
-dislikelink.addEventListener("click", function (evt) {
+dislikelink.addEventListener("click", function(evt) {
     callback(likesLoad, dislikelink.href, evt)
 }, false);
 
-window.addEventListener("load", function (evt) {
-    callback(likesLoad, 'http://localhost/php/ajax_like.php', null)
+window.addEventListener("load", function(evt) {
+    callback(likesLoad, '../php/ajax_like.php', null)
 })
 
-window.addEventListener("load", function (evt) {
-    callback(commentsLoad, 'http://localhost/php/ajax_comments.php', null) //load comments
+window.addEventListener("load", function(evt) {
+    callback(commentsLoad, '../php/ajax_comments.php', null) //load comments
 })

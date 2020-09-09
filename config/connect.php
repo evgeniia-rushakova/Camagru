@@ -6,8 +6,6 @@ $db_user = $DB_USER;
 $db_name = $DB_NAME;
 $db_pass = $DB_PASSWORD;
 
-
-
 function connect_to_database()
 {
 	global $db_dsn;

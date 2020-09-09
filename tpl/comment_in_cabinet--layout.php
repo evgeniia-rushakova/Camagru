@@ -1,5 +1,5 @@
 <div class="comment__photo-min-container">
-    <a class="comment__photo-miniature" href="http://localhost/photo_page.php?{img_href}"><img src="{img_src}" alt="duck!!!" width="100" height="auto"></a>
+    <a class="comment__photo-miniature" href="../photo_page.php?{img_href}"><img src="{img_src}" alt="miniature" width="100" height="auto"></a>
     <div class="photo__description-container--comment comment">
         <div class="comment__container">
             <img src="../img/avatars/{user_avatar}" alt="avatar" class="comment__author-avatar" width="48" height="auto" style="align-self: center;">

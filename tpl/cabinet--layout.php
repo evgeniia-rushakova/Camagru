@@ -4,12 +4,11 @@
             <h3 class="profile__title">Avatar</h3>
             <div class="cabinet__avatar__upload--wrapper">
                 <img class="cabinet__avatar-photo" src="img/avatars/{user_avatar}" alt="avatar of user">
-                <form  action="../php/avatar_upload.php" class="cabinet__avatar-form" method="post" enctype="multipart/form-data">
+                <form  action="../php/avatar_upload.php" class="cabinet__avatar-form" method="post" enctype="multipart/form-data" >
                     <input type="hidden" name="type_upload" value="avatar">
                     <label for="file" class="cabinet__avatar__upload-label">Choose file...</label>
-                    <input class="cabinet__avatar__upload" type="file" required id="file" name="userfile">
+                    <input class="cabinet__avatar__upload" type="file" required id="file" name="userfile"  accept=".jpg, .jpeg, .png .bmp .gif">
                     <input type="hidden" name="MAX_FILE_SIZE" value="300000">
-
                     <button class="cabinet__avatar-button" type="submit">change</button>
                 </form>
             </div>

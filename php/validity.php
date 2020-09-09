@@ -11,7 +11,7 @@ function clean_data($value = "")
 
 function check_validity_reg_data($data)
 {
-	if (!isset($data) || strlen($data) < 3 || strlen($data) > 29 || empty($data))//check big strlen
+	if (!isset($data) || strlen($data) < 3 || strlen($data) > 29 || empty($data))
 		return (false);
 	return (true);
 }

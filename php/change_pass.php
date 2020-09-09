@@ -9,7 +9,7 @@ function check_token_and_email()
 		$email = $_GET['email'];
 		$token = $_GET['token'];
 		$pdo = connect_to_database();;
-		$check = $pdo->prepare("SELECT COUNT(*) FROM Users where email = ? AND token = ?");
+		$check = $pdo->prepare("SELECT COUNT(*) FROM users where email = ? AND token = ?");
 		$check->execute(array(
 			$email,
 			$token
